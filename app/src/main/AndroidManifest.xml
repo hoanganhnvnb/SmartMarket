@@ -11,9 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMarket">
         <activity
+            android:name=".dashboard.DashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.SignupActivity"
             android:exported="false" />
-        <activity android:name=".login.LoginActivity"></activity>
+        <activity android:name=".login.LoginActivity" />
         <activity
             android:name=".introduction.IntroductionActivity"
             android:exported="true">
@@ -25,7 +28,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

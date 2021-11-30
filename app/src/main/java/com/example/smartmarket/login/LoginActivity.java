@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.MainActivity;
 import com.example.smartmarket.R;
+import com.example.smartmarket.dashboard.DashboardActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends Base {
@@ -50,7 +51,7 @@ public class LoginActivity extends Base {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
             }
         });
     }
