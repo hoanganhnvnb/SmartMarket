@@ -1,4 +1,4 @@
-package com.example.smartmarket.dashboard;
+package com.example.smartmarket.scan;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -24,11 +24,11 @@ public class ScanActivity extends Base {
         setContentView(R.layout.activity_scan);
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(this, scannerView);
-        mCodeScanner.setDecodeCallback(result -> runOnUiThread(() -> Toast.makeText(ScanActivity.this, result.getText(), Toast.LENGTH_LONG).show()));
+        mCodeScanner.setDecodeCallback(result -> runOnUiThread(() -> Toast.makeText(com.example.smartmarket.scan.ScanActivity.this, result.getText(), Toast.LENGTH_LONG).show()));
         scannerView.setOnClickListener(v -> mCodeScanner.startPreview());
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(ScanActivity.this, new String[] {Manifest.permission.CAMERA}, 101);
+            ActivityCompat.requestPermissions(com.example.smartmarket.scan.ScanActivity.this, new String[] {Manifest.permission.CAMERA}, 101);
         }
     }
 
@@ -45,3 +45,4 @@ public class ScanActivity extends Base {
         super.onPause();
     }
 }
+

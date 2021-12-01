@@ -17,10 +17,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.smartmarket.Base;
-import com.example.smartmarket.MainActivity;
 import com.example.smartmarket.R;
 import com.example.smartmarket.dashboard.DashboardActivity;
-import com.example.smartmarket.dashboard.ScanActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends Base {
