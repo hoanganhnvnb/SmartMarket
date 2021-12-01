@@ -3,8 +3,10 @@ package com.example.smartmarket.dashboard;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
@@ -46,5 +48,12 @@ public class DashboardActivity extends Base {
         });
 
         scanButton = (FloatingActionButton) findViewById(R.id.dash_scan_btn);
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, ScanActivity.class));
+//                System.out.println("Home");
+            }
+        });
     }
 }
