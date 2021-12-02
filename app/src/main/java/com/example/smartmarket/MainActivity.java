@@ -1,8 +1,8 @@
 package com.example.smartmarket;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
 
 public class MainActivity extends Base {
 

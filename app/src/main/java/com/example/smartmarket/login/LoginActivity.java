@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.smartmarket.Base;
-import com.example.smartmarket.MainActivity;
 import com.example.smartmarket.R;
 import com.example.smartmarket.dashboard.DashboardActivity;
 import com.google.android.material.textfield.TextInputLayout;
