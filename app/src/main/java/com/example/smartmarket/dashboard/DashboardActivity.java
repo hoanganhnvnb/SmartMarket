@@ -11,6 +11,7 @@ import com.example.models.Cart;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.example.smartmarket.cart.CartActivity;
+import com.example.smartmarket.scan.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
@@ -30,7 +31,7 @@ public class DashboardActivity extends Base {
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav_view);
         bottomNavigationView.setBackground(null);
-        Anhxa();
+        Mapping();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -54,9 +55,16 @@ public class DashboardActivity extends Base {
         });
 
         scanButton = (FloatingActionButton) findViewById(R.id.dash_scan_btn);
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, ScanActivity.class));
+//                System.out.println("Home");
+            }
+        });
     }
 
-    private void Anhxa() {
+    private void Mapping() {
         if(cartArrayList != null) {
 
         } else {

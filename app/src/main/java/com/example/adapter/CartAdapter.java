@@ -50,7 +50,7 @@ public class CartAdapter extends BaseAdapter {
         if(view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater)  context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.line_cart, null);
+            view = inflater.inflate(R.layout.row_cart, null);
             viewHolder.txtNameCart = (TextView) view.findViewById(R.id.name_cart);
             viewHolder.txtPriceCart = (TextView) view.findViewById(R.id.price_cart);
             viewHolder.imageCart = (ImageView) view.findViewById(R.id.imageview_cart);
@@ -64,12 +64,12 @@ public class CartAdapter extends BaseAdapter {
         Cart cart = (Cart) getItem(i);
         viewHolder.txtNameCart.setText(cart.getName());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        viewHolder.txtPriceCart.setText(decimalFormat.format(cart.getPrice()));
+        viewHolder.txtPriceCart.setText(decimalFormat.format(cart.getPrice()) + "Đ");
         Picasso.with(context).load(cart.getPicture())
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.error)
                 .into(viewHolder.imageCart);
-        viewHolder.btnValues.setText(cart.getQuantity());
+        viewHolder.btnValues.setText(cart.getQuantity() + "");
         return view;
     }
 }

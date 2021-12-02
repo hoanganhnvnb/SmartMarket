@@ -1,8 +1,10 @@
 package com.example.smartmarket.login;
 
 
+import android.Manifest;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -10,6 +12,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
@@ -53,6 +58,10 @@ public class LoginActivity extends Base {
                 startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
             }
         });
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(LoginActivity.this, new String[] {Manifest.permission.CAMERA}, 101);
+        }
     }
 
     public void toSignupTrans() {

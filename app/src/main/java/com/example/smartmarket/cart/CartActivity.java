@@ -1,15 +1,14 @@
 package com.example.smartmarket.cart;
 
-
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.adapter.CartAdapter;
 import com.example.smartmarket.Base;
@@ -23,15 +22,27 @@ public class CartActivity extends Base {
     ImageView emptyCart;
     TextView txtTotal;
     Button btnBuy;
-    Toolbar toolbarCart;
+    androidx.appcompat.widget.Toolbar toolbarCart;
     CartAdapter cartAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         Mapping();
+        ActionToolbar();
         CheckEmptyCart();
         EventUtil();
+    }
+
+    private void ActionToolbar() {
+        setSupportActionBar(toolbarCart);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarCart.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void EventUtil() {

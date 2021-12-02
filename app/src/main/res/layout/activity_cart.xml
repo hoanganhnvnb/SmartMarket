@@ -9,13 +9,13 @@
     android:layout_weight="10"
     tools:context=".cart.CartActivity">
 
-    <Toolbar
-        android:background="@color/green_500"
-        app:title="Cart"
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </Toolbar>
+        android:layout_height="wrap_content"
+        android:background="@color/green_500"
+        app:title="Cart">
+    </androidx.appcompat.widget.Toolbar>
     <LinearLayout
 
         android:layout_weight="9"
