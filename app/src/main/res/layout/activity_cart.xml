@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    android:layout_weight="10"
+    tools:context=".cart.CartActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_500"
+        app:title="Cart">
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/empty_cart_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/empty_cart_img" />
+            <ListView
+                android:id="@+id/listviewCart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </ListView>
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textColor="@color/purple_700"
+                    android:text="Total:"
+                    android:textSize="30sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="right|center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/textviewTotal"
+                    android:textAlignment="center"
+                    android:singleLine="true"
+                    android:textColor="@color/red_dark"
+                    android:text="value"
+                    android:textSize="30sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <Button
+                    android:textColor="@color/red_dark"
+                    android:text="Buy"
+                    android:textSize="30sp"
+                    android:id="@+id/button_buy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -3,6 +3,7 @@ package com.example.main;
 import android.app.Application;
 import android.util.Log;
 
+
 public class MarketApp extends Application {
 
     @Override
