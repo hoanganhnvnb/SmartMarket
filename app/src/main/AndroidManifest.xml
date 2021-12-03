@@ -15,7 +15,7 @@
         android:theme="@style/Theme.SmartMarket">
         <activity
             android:name=".dashboard.DashboardActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".scan.ScanActivity"
             android:exported="false" />
