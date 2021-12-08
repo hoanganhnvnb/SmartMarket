@@ -11,4 +11,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="action_cart">Cart</string>
     <string name="None" />
+    <string name="banner_ad_unit_id">ca-app-pub-3397136890800435/3089450708</string>
+
+    <string name="TRY_AGAIN">TRY AGAIN</string>
 </resources>
