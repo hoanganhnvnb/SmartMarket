@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.models.Cart;
 import com.example.smartmarket.Base;
+import com.example.smartmarket.Profile.UserProfile;
 import com.example.smartmarket.R;
 import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.scan.ScanActivity;
@@ -48,6 +50,7 @@ public class DashboardActivity extends Base {
                         break;
                     case R.id.menu_user:
                         System.out.println("User");
+                        startActivity(new Intent(DashboardActivity.this, UserProfile.class));
                         break;
                 }
                 return true;
@@ -62,6 +65,9 @@ public class DashboardActivity extends Base {
 //                System.out.println("Home");
             }
         });
+
+
+
     }
 
     private void Mapping() {
