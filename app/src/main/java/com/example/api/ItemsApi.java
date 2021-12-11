@@ -19,7 +19,7 @@ public class ItemsApi {
 
     public static Items get(String call, String id) {
         String json = Rest.get(call + "/" + id);
-        Log.v("donate", "JSON RESULT: " + json);
+        Log.v("shop", "JSON RESULT: " + json);
         Type objType = new TypeToken<Items>(){}.getType();
 
         return new Gson().fromJson(json, objType);
@@ -33,9 +33,9 @@ public class ItemsApi {
         return Rest.delete(call + "/" + id);
     }
 
-    public static String insert(String call, Items donation) {
+    public static String insert(String call, Items item) {
         Type objType = new TypeToken<Items>(){}.getType();
-        String json = new Gson().toJson(donation, objType);
+        String json = new Gson().toJson(item, objType);
 
         return Rest.post(call, json);
     }

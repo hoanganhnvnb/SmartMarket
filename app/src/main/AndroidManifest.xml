@@ -14,10 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMarket">
         <activity
+            android:name=".items.ListItemsActivity"
+            android:exported="false" />
+        <activity
             android:name=".dashboard.DashboardAdminActivity"
             android:exported="false" />
-            android:name=".Profile.UserProfile"
-            android:exported="true" />
         <activity
             android:name=".dashboard.DashboardActivity"
             android:exported="true" />
@@ -44,7 +45,6 @@
         <activity
             android:name=".addItems.AddActivity"
             android:exported="true" />
-
     </application>
 
 </manifest>
