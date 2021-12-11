@@ -27,7 +27,7 @@ public class Items {
 
     public Items(int id, String barcode, String title, String description,
                  Category category, double importPrice, double sellPrice,
-                 int quantity, String companyName, boolean active) {
+                 int quantity) {
 
         this.id = id;
         this.barcode = barcode;
@@ -37,7 +37,5 @@ public class Items {
         this.importPrice = importPrice;
         this.sellPrice = sellPrice;
         this.quantity = quantity;
-        this.companyName = companyName;
-        this.active = active;
     }
 }
