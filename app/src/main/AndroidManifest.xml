@@ -16,9 +16,11 @@
         <activity
             android:name=".dashboard.DashboardAdminActivity"
             android:exported="false" />
+            android:name=".Profile.UserProfile"
+            android:exported="true" />
         <activity
             android:name=".dashboard.DashboardActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".scan.ScanActivity"
             android:exported="false" />
@@ -39,6 +41,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+        <activity
+            android:name=".addItems.AddActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
