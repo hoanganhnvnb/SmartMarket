@@ -1,19 +1,18 @@
 package com.example.smartmarket.dashboard;
 
-import androidx.annotation.NonNull;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+
+import androidx.annotation.NonNull;
 
 import com.example.models.Cart;
 import com.example.smartmarket.Base;
-import com.example.smartmarket.Profile.UserProfile;
 import com.example.smartmarket.R;
 import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.scan.ScanActivity;
+import com.example.smartmarket.userList.UserList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
@@ -50,7 +49,7 @@ public class DashboardActivity extends Base {
                         break;
                     case R.id.menu_user:
                         System.out.println("User");
-                        startActivity(new Intent(DashboardActivity.this, UserProfile.class));
+                        startActivity(new Intent(DashboardActivity.this, UserList.class));
                         break;
                 }
                 return true;

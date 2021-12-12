@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Profile.UserProfile"
     android:orientation="vertical">
 
@@ -51,10 +51,13 @@
                 android:id="@+id/button_return"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
-                android:drawableTint="@drawable/ic_back" />
-    </RelativeLayout>
+                android:drawableTop="@drawable/ic_return" />
+        </RelativeLayout>
 
         <LinearLayout
         android:layout_width="match_parent"
@@ -69,12 +72,12 @@
             android:layout_marginBottom="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fullname_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_user"
                 android:drawablePadding="10dp"
-                android:text="PiKaChu"
-                android:id="@+id/fullname_profile"/>
+                android:text="PiKaChu" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_lock"
                 android:drawablePadding="10dp"
-                android:text="bátuốt"
+                android:text="******"
                 android:id="@+id/password_profile"/>
 
         </com.google.android.material.textfield.TextInputLayout>

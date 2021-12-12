@@ -1,18 +1,15 @@
-package com.example.smartmarket.Profile;
+package com.example.smartmarket.userList;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.models.User;
 import com.example.smartmarket.Base;
+import com.example.smartmarket.Profile.UserAdapter;
 import com.example.smartmarket.R;
-import com.example.smartmarket.dashboard.DashboardActivity;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
@@ -27,23 +24,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class UserProfile extends Base {
-
-    Button button;
-
+public class UserList extends Base {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
-
-        button = (Button) findViewById(R.id.button_return);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(UserProfile.this, DashboardActivity.class);
-                startActivity(i);
-            }
-        });
+        setContentView(R.layout.activity_user_list);
 
         final RecyclerView rvUsers = (RecyclerView) findViewById(R.id.rv_users);
         rvUsers.setLayoutManager(new LinearLayoutManager(this));
@@ -74,7 +59,7 @@ public class UserProfile extends Base {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        rvUsers.setAdapter(new UserAdapter(users, UserProfile.this));
+                        rvUsers.setAdapter(new UserAdapter(users, UserList.this));
                     }
                 });
             }
