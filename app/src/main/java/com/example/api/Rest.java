@@ -13,7 +13,7 @@ public class Rest {
     private static URL url;
 
     private static final String hostURL = "http://18.220.110.46:8000/";
-    private static final String LocalHostURL = "http://192.168.1.5:3000";
+    private static final String LocalHostURL = "http://18.220.110.46:8000/";
 
     public static void setup(String request) {
         try {
@@ -72,7 +72,7 @@ public class Rest {
             httpCon.setDoInput(true);
             httpCon.connect();
 
-            Log.v("donate", "POST REQUEST is : " + httpCon.getRequestMethod() + " " + httpCon.getURL());
+            Log.v("shop", "POST REQUEST is : " + httpCon.getRequestMethod() + " " + httpCon.getURL());
 
             // Read the output from server
             writer = new OutputStreamWriter(httpCon.getOutputStream());
@@ -88,10 +88,10 @@ public class Rest {
                     stringBuilder.append(line + "\n");
                 }
 
-                Log.v("donate", "JSON POST RESPONSE : " + stringBuilder.toString());
+                Log.v("shop", "JSON POST RESPONSE : " + stringBuilder.toString());
             }
         } catch (Exception e) {
-            Log.v("donate", "POST ERROR MESSAGE: " + e.getMessage());
+            Log.v("shop", "POST ERROR MESSAGE: " + e.getMessage());
         }
 
         return stringBuilder.toString();
@@ -106,13 +106,13 @@ public class Rest {
             httpCon.setRequestMethod("DELETE");
             httpCon.connect();
 
-            Log.v("donate", "DELETE REQUEST is : " + httpCon.getRequestMethod() + " " + httpCon.getURL());
+            Log.v("shop", "DELETE REQUEST is : " + httpCon.getRequestMethod() + " " + httpCon.getURL());
 
             response = httpCon.getResponseMessage();
-            Log.v("donate", "JSON DELETE RESPONSE : " + response);
+            Log.v("shop", "JSON DELETE RESPONSE : " + response);
 
         } catch (Exception e) {
-            Log.v("donate","DELETE REQUEST ERROR" + e.getMessage());
+            Log.v("shop","DELETE REQUEST ERROR" + e.getMessage());
         }
 
         return response;
