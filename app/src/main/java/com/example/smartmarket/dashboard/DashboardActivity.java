@@ -16,6 +16,7 @@ import com.example.api.ApiService;
 import com.example.models.Cart;
 import com.example.models.Category;
 import com.example.models.Items;
+import com.example.models.User;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.Profile.Profile;
 import com.example.smartmarket.R;
@@ -52,6 +53,25 @@ public class DashboardActivity extends Base {
         createBottomNav();
 
         createCart();
+
+        getUserList();
+    }
+
+    private void getUserList() {
+        ApiService.apiService.getAllUser().enqueue(new Callback<ArrayList<User>>() {
+            @Override
+            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
+                ArrayList<User> users = response.body();
+                if (users != null) {
+                    app.users = users;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void createCart() {
