@@ -7,6 +7,7 @@ public class Category {
     public String description;
     public boolean active;
     public String image;
+    public String test;
 
     public Category() {
         this.id = 0;
@@ -15,6 +16,7 @@ public class Category {
         this.description = "";
         this.active = false;
         this.image = "";
+        this.test = "";
     }
 
     public Category(int id, String title, String slug, String description, boolean active, String image) {

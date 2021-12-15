@@ -1,39 +1,35 @@
 package com.example.smartmarket.dashboard;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.adapter.CategoryAdapter;
 import com.example.adapter.PopularAdapter;
-import com.example.api.CategoryApi;
-import com.example.api.ItemsApi;
+import com.example.api.ApiService;
 import com.example.models.Cart;
 import com.example.models.Category;
 import com.example.models.Items;
+import com.example.models.User;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.Profile.Profile;
-import com.example.smartmarket.Profile.UserProfile;
 import com.example.smartmarket.R;
-import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.scan.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DashboardActivity extends Base {
 
@@ -55,13 +51,50 @@ public class DashboardActivity extends Base {
         createRVDash();
 
         createBottomNav();
+
+        createCart();
+
+        getUserList();
+    }
+
+    private void getUserList() {
+        ApiService.apiService.getAllUser().enqueue(new Callback<ArrayList<User>>() {
+            @Override
+            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
+                ArrayList<User> users = response.body();
+                if (users != null) {
+                    app.users = users;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void createCart() {
+
+        ApiService.apiService.createCart().enqueue(new Callback<Cart>() {
+            @Override
+            public void onResponse(Call<Cart> call, Response<Cart> response) {
+                Cart cart = response.body();
+                if (cart != null) {
+                    app.mCart = cart;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Cart> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        new GetAllCategoryTask(this).execute("category/api/categories");
-        new GetPopularItemsTask(this).execute("items/api/items/popular");
     }
 
     private void createRVDash() {
@@ -76,12 +109,45 @@ public class DashboardActivity extends Base {
 
         recyclerViewPopular = (RecyclerView) findViewById(R.id.dash_popular_rv);
         recyclerViewPopular.setLayoutManager(linearLayoutManagerPop);
+
+        ApiService.apiService.getAllCategoryApi().enqueue(new Callback<ArrayList<Category>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Category>> call, Response<ArrayList<Category>> response) {
+                Toast.makeText(DashboardActivity.this, "Call Category Api Succeed", Toast.LENGTH_SHORT).show();
+
+                if (response.body() != null) {
+                    app.categories = response.body();
+                    categoryAdapter = new CategoryAdapter(app.categories);
+                    recyclerViewCategory.setAdapter(categoryAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Category>> call, Throwable t) {
+                Toast.makeText(DashboardActivity.this, "Call Category Api ERROR", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ApiService.apiService.getPopularItemsApi().enqueue(new Callback<ArrayList<Items>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Items>> call, Response<ArrayList<Items>> response) {
+                if (response.body() != null) {
+                    app.itemsPopular = response.body();
+                    popularAdapter = new PopularAdapter(app.itemsPopular);
+                    recyclerViewPopular.setAdapter(popularAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Items>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void createBottomNav() {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav_view);
         bottomNavigationView.setBackground(null);
-        Mapping();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -94,7 +160,6 @@ public class DashboardActivity extends Base {
                         break;
                     case R.id.menu_cart:
                         System.out.println("Cart");
-                        startActivity(new Intent(DashboardActivity.this, CartActivity.class));
                         break;
                     case R.id.menu_user:
                         System.out.println("User");
@@ -114,96 +179,7 @@ public class DashboardActivity extends Base {
         });
     }
 
-    private void Mapping() {
-        if(cartArrayList != null) {
 
-        } else {
-            cartArrayList = new ArrayList<>();
-        }
-    }
-
-
-    // Category Task
-    private class GetAllCategoryTask extends AsyncTask<String, Void, ArrayList<Category>> {
-        protected ProgressDialog dialog;
-        protected Context context;
-
-        public GetAllCategoryTask(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            this.dialog = new ProgressDialog(context, 1);
-            this.dialog.setMessage("Retrieving Category List");
-            this.dialog.show();
-        }
-
-        @Override
-        protected ArrayList<Category> doInBackground(String... params) {
-            try {
-                Log.v("shop", "Market App Getting All Category");
-                return (ArrayList<Category>) CategoryApi.getAll((String) params[0]);
-            } catch (Exception e) {
-                Log.v("shop", "ERROR: " + e);
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Category> result) {
-            super.onPostExecute(result);
-
-            // use result here
-            app.categories = result;
-            categoryAdapter = new CategoryAdapter(app.categories);
-            recyclerViewCategory.setAdapter(categoryAdapter);
-
-
-            if (dialog.isShowing()) {
-                dialog.dismiss();
-            }
-        }
-    }
-
-
-    // Item Task
-    private class GetPopularItemsTask extends AsyncTask<String, Void, ArrayList<Items>> {
-        protected Context context;
-
-        public GetPopularItemsTask(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected ArrayList<Items> doInBackground(String... params) {
-            try {
-                Log.v("shop", "Market App Getting 10 Popular Items");
-                return (ArrayList<Items>) ItemsApi.getAll((String) params[0]);
-            } catch (Exception e) {
-                Log.v("shop", "ERROR: " + e);
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Items> result) {
-            super.onPostExecute(result);
-
-            // use result here
-            app.itemsPopular = result;
-            popularAdapter = new PopularAdapter(app.itemsPopular);
-            recyclerViewPopular.setAdapter(popularAdapter);
-        }
-    }
 
 }
 

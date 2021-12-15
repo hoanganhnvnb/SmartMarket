@@ -19,6 +19,9 @@
             android:name=".Profile.UserList"
             android:exported="true" />
         <activity
+            android:name=".items.DetailItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".Profile.Profile"
             android:exported="true" />
         <activity
@@ -49,7 +52,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".cart.CartActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
