@@ -16,8 +16,8 @@ public class MarketApp extends Application {
 
     public ArrayList<Category> categories = new ArrayList<>();
     public ArrayList<Items> itemsPopular = new ArrayList<>();
+    public ArrayList<User>  users = new ArrayList<>();
     public ArrayList<Items> items = new ArrayList<>();
-    public ArrayList<User> users = new ArrayList<>();
 
     public User mUser;
     public static Token token;
