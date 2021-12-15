@@ -1,32 +1,23 @@
 package com.example.smartmarket.dashboard;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.adapter.CategoryAdapter;
 import com.example.adapter.PopularAdapter;
 import com.example.api.ApiService;
-import com.example.api.CategoryApi;
-import com.example.api.ItemsApi;
 import com.example.models.Cart;
 import com.example.models.Category;
 import com.example.models.Items;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.Profile.Profile;
-import com.example.smartmarket.Profile.UserProfile;
 import com.example.smartmarket.R;
 import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.scan.ScanActivity;
@@ -35,7 +26,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,7 +74,7 @@ public class DashboardActivity extends Base {
         ApiService.apiService.getAllCategoryApi().enqueue(new Callback<ArrayList<Category>>() {
             @Override
             public void onResponse(Call<ArrayList<Category>> call, Response<ArrayList<Category>> response) {
-                Toast.makeText(DashboardActivity.this, "Call Category Api Succeed", Toast.LENGTH_SHORT);
+                Toast.makeText(DashboardActivity.this, "Call Category Api Succeed", Toast.LENGTH_SHORT).show();
 
                 if (response.body() != null) {
                     app.categories = response.body();
@@ -95,7 +85,7 @@ public class DashboardActivity extends Base {
 
             @Override
             public void onFailure(Call<ArrayList<Category>> call, Throwable t) {
-                Toast.makeText(DashboardActivity.this, "Call Category Api ERROR", Toast.LENGTH_SHORT);
+                Toast.makeText(DashboardActivity.this, "Call Category Api ERROR", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -119,7 +109,6 @@ public class DashboardActivity extends Base {
     private void createBottomNav() {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav_view);
         bottomNavigationView.setBackground(null);
-        Mapping();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -152,12 +141,7 @@ public class DashboardActivity extends Base {
         });
     }
 
-    private void Mapping() {
-        if(cartArrayList != null) {
 
-        } else {
-            cartArrayList = new ArrayList<>();
-        }
-    }
+
 }
 

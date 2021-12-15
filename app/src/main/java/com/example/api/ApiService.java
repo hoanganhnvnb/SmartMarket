@@ -2,6 +2,8 @@ package com.example.api;
 
 import com.example.models.Category;
 import com.example.models.Items;
+import com.example.models.MessageApi;
+import com.example.models.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -10,7 +12,9 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public interface ApiService {
 
@@ -38,4 +42,10 @@ public interface ApiService {
     //get all items Api
     @GET("items/api/items")
     Call<ArrayList<Items>> getAllItemsApi();
+
+
+    // USER API----------------------------------------------------------
+    // register user
+    @POST("user/api/users")
+    Call<MessageApi> registerUser(@Body User user);
 }
