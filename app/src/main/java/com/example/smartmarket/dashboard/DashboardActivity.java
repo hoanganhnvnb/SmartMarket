@@ -25,6 +25,7 @@ import com.example.models.Cart;
 import com.example.models.Category;
 import com.example.models.Items;
 import com.example.smartmarket.Base;
+import com.example.smartmarket.Profile.Profile;
 import com.example.smartmarket.Profile.UserProfile;
 import com.example.smartmarket.R;
 import com.example.smartmarket.cart.CartActivity;
@@ -135,7 +136,7 @@ public class DashboardActivity extends Base {
                         break;
                     case R.id.menu_user:
                         System.out.println("User");
-                        startActivity(new Intent(DashboardActivity.this, UserProfile.class));
+                        startActivity(new Intent(DashboardActivity.this, Profile.class));
                         break;
                 }
                 return true;

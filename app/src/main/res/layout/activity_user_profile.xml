@@ -13,48 +13,52 @@
         android:orientation="vertical">
 
         <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:padding="20dp"
-        android:background="@color/green_300">
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/green_300"
+            android:padding="20dp">
 
             <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/avatar"
-            android:layout_centerVertical="true"/>
+                android:id="@+id/profile_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/avatar" />
 
-        <TextView
-            android:id="@+id/full_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pi cà chu"
-            android:textSize="20sp"
-            android:fontFamily="@font/bungee"
-            android:layout_toRightOf="@+id/profile_image"
-            android:layout_centerVertical="true"
-            android:includeFontPadding="false"
-            android:layout_marginLeft="10dp"/>
+            <TextView
+                android:id="@+id/full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:fontFamily="@font/bungee"
+                android:includeFontPadding="false"
+                android:text="Pi cà chu"
+                android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pi_cà_chu"
-            android:textSize="14sp"
-            android:layout_toRightOf="@+id/profile_image"
-            android:includeFontPadding="false"
-            android:layout_below="@id/full_name"
-            android:layout_marginLeft="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/full_name"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:includeFontPadding="false"
+                android:text="Pi_cà_chu"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/button_return"
-                android:layout_width="wrap_content"
+                android:layout_width="48dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
                 android:background="@android:color/transparent"
-                android:drawableTint="@drawable/ic_back" />
-    </RelativeLayout>
+                android:drawableRight="@drawable/ic_back"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </RelativeLayout>
 
         <LinearLayout
         android:layout_width="match_parent"
@@ -110,28 +114,29 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:layout_marginBottom="10dp">
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Password"-->
+<!--            android:layout_marginBottom="10dp">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_lock"
-                android:drawablePadding="10dp"
-                android:text="bátuốt"
-                android:id="@+id/password_profile"/>
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawableLeft="@drawable/ic_lock"-->
+<!--                android:drawablePadding="10dp"-->
+<!--                android:text="bátuốt"-->
+<!--                android:id="@+id/password_profile"/>-->
 
-        </com.google.android.material.textfield.TextInputLayout>
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Update Profile"
             android:fontFamily="@font/bungee"
-            android:background="@color/green_300"
+            android:background="@drawable/button_bg"
             android:id="@+id/button_update"/>
 
         </LinearLayout>

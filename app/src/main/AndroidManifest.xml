@@ -19,6 +19,12 @@
             android:name=".items.DetailItemActivity"
             android:exported="false" />
         <activity
+            android:name=".Profile.Profile"
+            android:exported="true" />
+        <activity
+            android:name=".Profile.UserProfile"
+            android:exported="true" />
+        <activity
             android:name=".items.ListItemsActivity"
             android:exported="false" />
         <activity

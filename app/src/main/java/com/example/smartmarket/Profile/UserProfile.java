@@ -28,7 +28,7 @@ public class UserProfile extends Base {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent( UserProfile.this, DashboardActivity.class);
+                Intent i = new Intent( UserProfile.this, Profile.class);
                 startActivity(i);
             }
         });
