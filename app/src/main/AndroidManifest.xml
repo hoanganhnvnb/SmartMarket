@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMarket">
         <activity
+            android:name=".items.DetailItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".Profile.Profile"
             android:exported="true" />
         <activity
