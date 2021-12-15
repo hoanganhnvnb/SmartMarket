@@ -1,6 +1,8 @@
 package com.example.smartmarket.Profile;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.example.smartmarket.dashboard.DashboardActivity;
 
@@ -9,7 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Profile extends AppCompatActivity {
+public class Profile extends Base {
 
     Button button1,button2,button3;
 
