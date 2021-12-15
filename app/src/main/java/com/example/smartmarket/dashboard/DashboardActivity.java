@@ -19,7 +19,6 @@ import com.example.models.Items;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.Profile.Profile;
 import com.example.smartmarket.R;
-import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.scan.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -51,6 +50,26 @@ public class DashboardActivity extends Base {
         createRVDash();
 
         createBottomNav();
+
+        createCart();
+    }
+
+    private void createCart() {
+
+        ApiService.apiService.createCart().enqueue(new Callback<Cart>() {
+            @Override
+            public void onResponse(Call<Cart> call, Response<Cart> response) {
+                Cart cart = response.body();
+                if (cart != null) {
+                    app.mCart = cart;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Cart> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
@@ -121,7 +140,6 @@ public class DashboardActivity extends Base {
                         break;
                     case R.id.menu_cart:
                         System.out.println("Cart");
-                        startActivity(new Intent(DashboardActivity.this, CartActivity.class));
                         break;
                     case R.id.menu_user:
                         System.out.println("User");

@@ -2,57 +2,20 @@ package com.example.models;
 
 public class Cart {
     public int id;
-    public String name;
-    public long price;
-    public String picture;
-    public int quantity;
+    public int user;
+    public String create_at;
+    public String update_at;
+    public boolean active;
 
-    public Cart(int id, String name, long price, String picture, int quantity) {
+    public Cart() {
+    }
+
+    public Cart(int id, int user, String create_at, String update_at, boolean active) {
         this.id = id;
-        this.name = name;
-        this.price = price;
-        this.picture = picture;
-        this.quantity = quantity;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        this.user = user;
+        this.create_at = create_at;
+        this.update_at = update_at;
+        this.active = active;
     }
 }
 

@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.smartmarket.R;
-import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.scan.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

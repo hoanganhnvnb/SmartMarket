@@ -12,14 +12,23 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.api.ApiService;
+import com.example.models.MessageApi;
+import com.example.models.Token;
+import com.example.models.User;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.example.smartmarket.dashboard.DashboardActivity;
 import com.google.android.material.textfield.TextInputLayout;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends Base {
 
@@ -55,13 +64,41 @@ public class LoginActivity extends Base {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                login();
             }
         });
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(LoginActivity.this, new String[] {Manifest.permission.CAMERA}, 101);
         }
+    }
+
+    public void login() {
+        String username = login_username.getEditText().getText().toString();
+        String pass = login_password.getEditText().getText().toString();
+
+        User userLogin = new User();
+        userLogin.username = username;
+        userLogin.password = pass;
+
+        ApiService.apiService.loginUser(userLogin).enqueue(new Callback<Token>() {
+            @Override
+            public void onResponse(Call<Token> call, Response<Token> response) {
+                Token token = response.body();
+                if (token != null) {
+                    Toast.makeText(LoginActivity.this, "Login succeed", Toast.LENGTH_SHORT).show();
+                    app.token = token;
+                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                } else {
+                    Toast.makeText(LoginActivity.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Token> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Login Fail", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void toSignupTrans() {
