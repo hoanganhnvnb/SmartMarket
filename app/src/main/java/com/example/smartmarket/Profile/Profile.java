@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class Profile extends AppCompatActivity {
 
-    Button button1,button2;
+    Button button1,button2,button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,15 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent( Profile.this, UserProfile.class);
+                startActivity(i);
+            }
+        });
+
+        button3 = (Button)findViewById(R.id.btn_user_list);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( Profile.this, UserList.class);
                 startActivity(i);
             }
         });

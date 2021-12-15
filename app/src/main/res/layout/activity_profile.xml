@@ -91,6 +91,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
+                android:id="@+id/btn_user_list"
                 android:layout_height="60dp"
                 android:padding="15dp"
                 android:drawableEnd="@drawable/ic_t"
