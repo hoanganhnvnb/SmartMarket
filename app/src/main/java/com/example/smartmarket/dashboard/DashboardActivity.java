@@ -54,24 +54,6 @@ public class DashboardActivity extends Base {
 
         createCart();
 
-        getUserList();
-    }
-
-    private void getUserList() {
-        ApiService.apiService.getAllUser().enqueue(new Callback<ArrayList<User>>() {
-            @Override
-            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
-                ArrayList<User> users = response.body();
-                if (users != null) {
-                    app.users = users;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
-
-            }
-        });
     }
 
     private void createCart() {
