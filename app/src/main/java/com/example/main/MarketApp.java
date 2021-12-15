@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.models.Category;
 import com.example.models.Items;
+import com.example.models.User;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,8 @@ public class MarketApp extends Application {
 
     public ArrayList<Category> categories = new ArrayList<>();
     public ArrayList<Items> itemsPopular = new ArrayList<>();
+
+    public User mUser;
 
     @Override
     public void onCreate (){
