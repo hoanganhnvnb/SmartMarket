@@ -46,7 +46,7 @@ public class ListItemsAdapter extends RecyclerView.Adapter<ListItemsAdapter.Item
         holder.item_des.setMaxLines(1);
         holder.item_des.setEllipsize(TextUtils.TruncateAt.END);
         holder.item_des.setText(item.description);
-        holder.item_quantity.setText(String.valueOf(item.quantity));
+        holder.item_quantity.setText("Số lượng: " + String.valueOf(item.quantity));
         Picasso.with(holder.itemView.getContext())
                 .load(imgUrl)
                 .into(holder.item_image);

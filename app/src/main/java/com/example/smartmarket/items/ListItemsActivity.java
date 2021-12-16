@@ -13,7 +13,6 @@ import com.example.api.ApiService;
 import com.example.models.Items;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.Profile.Profile;
-import com.example.smartmarket.Profile.UserList;
 import com.example.smartmarket.R;
 
 import java.util.ArrayList;
