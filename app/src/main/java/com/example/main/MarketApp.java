@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.example.models.Cart;
+import com.example.models.CartItems;
 import com.example.models.Category;
 import com.example.models.Items;
 import com.example.models.Token;
@@ -18,6 +19,7 @@ public class MarketApp extends Application {
     public ArrayList<Items> itemsPopular = new ArrayList<>();
     public ArrayList<User>  users = new ArrayList<>();
     public ArrayList<Items> items = new ArrayList<>();
+    public ArrayList<CartItems> cartItems = new ArrayList<>();
 
     public User mUser;
     public static Token token;

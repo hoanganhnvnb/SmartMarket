@@ -21,6 +21,7 @@ import com.example.models.User;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.Profile.Profile;
 import com.example.smartmarket.R;
+import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.scan.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -143,6 +144,7 @@ public class DashboardActivity extends Base {
                         break;
                     case R.id.menu_cart:
                         System.out.println("Cart");
+                        startActivity(new Intent(DashboardActivity.this, CartActivity.class));
                         break;
                     case R.id.menu_user:
                         System.out.println("User");

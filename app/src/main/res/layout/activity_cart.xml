@@ -1,92 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/backgroundColor"
-    android:layout_weight="10"
     tools:context=".cart.CartActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarCart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/green_500"
-        app:title="Cart">
-    </androidx.appcompat.widget.Toolbar>
-    <LinearLayout
 
-        android:layout_weight="9"
+    <TextView
+        android:id="@+id/text_empty_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giỏ hàng rỗng"
+        android:textColor="#000000"
+        app:layout_anchor="@+id/scrollView2"
+        app:layout_anchorGravity="center" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp">
-        <FrameLayout
+        android:layout_height="60dp"
+        android:background="@color/green_300"
+        android:layout_marginBottom="32dp"
+        android:layout_gravity="top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Giỏ hàng của tôi"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/cart_backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:drawableLeft="@drawable/ic_back_white"
+            android:layout_marginLeft="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cart_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView
-                android:layout_gravity="center"
-                android:id="@+id/empty_cart_img"
+
+            <TextView
+                android:id="@+id/text_sum_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@drawable/empty_cart_img" />
-            <ListView
-                android:id="@+id/listviewCart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </ListView>
-        </FrameLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:weightSum="3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:textColor="@color/purple_700"
-                    android:text="Total:"
-                    android:textSize="30sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:gravity="right|center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/textviewTotal"
-                    android:textAlignment="center"
-                    android:singleLine="true"
-                    android:textColor="@color/red_dark"
-                    android:text="value"
-                    android:textSize="30sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <Button
-                    android:textColor="@color/red_dark"
-                    android:text="Buy"
-                    android:textSize="30sp"
-                    android:id="@+id/button_buy"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+                android:text="Tổng thanh toán"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/text_pay_cur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="đ"
+                app:layout_constraintStart_toEndOf="@id/text_sum_pay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/green_500"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/cart_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/text_pay_cur"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginLeft="3dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/green_500"
+                android:text="10.000"/>
+
+            <Button
+                android:id="@+id/cart_payButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/green_500"
+                android:textAllCaps="false"
+                android:text="Thanh toán"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
