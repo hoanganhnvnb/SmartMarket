@@ -3,16 +3,18 @@ package com.example.smartmarket.items;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.models.Items;
+import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
-public class DetailItemActivity extends AppCompatActivity {
+public class DetailItemActivity extends Base {
 
     FloatingActionButton detail_item_backbtn, detail_item_cartbtn;
     ImageView detail_item_image;
@@ -61,5 +63,12 @@ public class DetailItemActivity extends AppCompatActivity {
         detail_quantity_sold = (TextView) findViewById(R.id.detail_quantity_sold);
         detail_quantity = (TextView) findViewById(R.id.detail_quantity);
         detail_item_btnbuy = (Button) findViewById(R.id.detail_item_btnbuy);
+
+        detail_item_backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 }
