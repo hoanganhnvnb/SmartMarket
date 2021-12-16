@@ -115,7 +115,7 @@ public class DashboardActivity extends Base {
             public void onResponse(Call<ArrayList<Items>> call, Response<ArrayList<Items>> response) {
                 if (response.body() != null) {
                     app.itemsPopular = response.body();
-                    popularAdapter = new PopularAdapter(app.itemsPopular);
+                    popularAdapter = new PopularAdapter(DashboardActivity.this, app.itemsPopular);
                     recyclerViewPopular.setAdapter(popularAdapter);
                 }
             }
