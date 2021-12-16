@@ -22,15 +22,19 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/nameUser"
-            android:layout_width="wrap_content"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="65dp"
             android:layout_marginBottom="40dp"
-            android:text="Name Profile"
+            android:gravity="center"
+            android:text="Hồ sơ người dùng"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <Button
@@ -39,7 +43,6 @@
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/ic_back"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -51,7 +54,6 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="61dp"
-            android:layout_marginEnd="10dp"
             android:background="@android:color/transparent"
             android:drawableEnd="@drawable/ic_t"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -103,6 +105,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <Button
+                android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="60dp"
@@ -116,6 +119,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <Button
+                android:id="@+id/btn_support"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="60dp"
