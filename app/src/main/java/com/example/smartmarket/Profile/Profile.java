@@ -1,11 +1,12 @@
 package com.example.smartmarket.Profile;
 
-import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.example.smartmarket.dashboard.DashboardActivity;
 import com.example.smartmarket.login.LoginActivity;
+import com.example.smartmarket.items.ListItemsActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -65,7 +66,6 @@ public class Profile extends Base {
                 startActivity(i);
             }
         });
-
 
     }
 

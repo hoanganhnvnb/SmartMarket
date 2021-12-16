@@ -32,7 +32,8 @@ public interface ApiService {
         public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
             Request request = chain.request().newBuilder().build();
             if (MarketApp.userIsLogin()) {
-                request = request.newBuilder().header("Authorization", "Bearer " + MarketApp.token.access).build();
+                request = request.newBuilder().header("Authorization", "Bearer " +
+                        MarketApp.token.access).build();
             }
             return chain.proceed(request);
         }
