@@ -1,10 +1,14 @@
 package com.example.adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,14 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.models.Items;
 import com.example.smartmarket.R;
+import com.example.smartmarket.items.DetailItemActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ListItemsAdapter extends RecyclerView.Adapter<ListItemsAdapter.ItemViewHolder> {
     ArrayList<Items> listItems;
+    Context context;
 
-    public ListItemsAdapter(ArrayList<Items> listItems) {
+    public ListItemsAdapter(Context c, ArrayList<Items> listItems) {
+        this.context = c;
         this.listItems = listItems;
     }
 
@@ -43,6 +50,12 @@ public class ListItemsAdapter extends RecyclerView.Adapter<ListItemsAdapter.Item
         Picasso.with(holder.itemView.getContext())
                 .load(imgUrl)
                 .into(holder.item_image);
+        holder.item_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickDetail(item);
+            }
+        });
     }
 
 
@@ -54,11 +67,20 @@ public class ListItemsAdapter extends RecyclerView.Adapter<ListItemsAdapter.Item
         return listItems.size();
     }
 
+    private void onClickDetail(Items item) {
+        Intent intent = new Intent(context, DetailItemActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_item", item);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         ImageView item_image;
         TextView item_title;
         TextView item_des;
         TextView item_quantity;
+        LinearLayout item_layout;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +89,7 @@ public class ListItemsAdapter extends RecyclerView.Adapter<ListItemsAdapter.Item
             item_title = itemView.findViewById(R.id.rv_item_title);
             item_des = itemView.findViewById(R.id.rv_item_des);
             item_quantity = itemView.findViewById(R.id.rv_item_quantity);
+            item_layout = itemView.findViewById(R.id.item_layout);
         }
     }
 }

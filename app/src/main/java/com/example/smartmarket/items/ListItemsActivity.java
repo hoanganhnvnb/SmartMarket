@@ -56,7 +56,7 @@ public class ListItemsActivity extends Base {
             public void onResponse(Call<ArrayList<Items>> call, Response<ArrayList<Items>> response) {
                 if (response.body() != null) {
                     app.items = response.body();
-                    listItemsAdapter = new ListItemsAdapter(app.items);
+                    listItemsAdapter = new ListItemsAdapter(ListItemsActivity.this ,app.items);
                     recyclerViewItem.setAdapter(listItemsAdapter);
                 }
             }
