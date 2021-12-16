@@ -29,7 +29,7 @@
             android:exported="true" />
         <activity
             android:name=".items.ListItemsActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".dashboard.DashboardAdminActivity"
             android:exported="false" />
