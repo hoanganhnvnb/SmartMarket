@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:background="@drawable/card_bg"
     android:layout_margin="10dp"
-    android:elevation="3dp">
+    android:elevation="3dp"
+    android:id="@+id/popular_layout">
 
     <ImageView
         android:id="@+id/popular_image"

@@ -1,5 +1,8 @@
 package com.example.adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.models.Items;
 import com.example.smartmarket.R;
+import com.example.smartmarket.dashboard.DashboardActivity;
+import com.example.smartmarket.items.DetailItemActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
     ArrayList<Items> itemsPopular;
+    Context context;
 
-    public PopularAdapter(ArrayList<Items> itemsPopular) {
+    public PopularAdapter(Context context, ArrayList<Items> itemsPopular) {
         this.itemsPopular = itemsPopular;
+        this.context = context;
     }
 
     @NonNull
@@ -44,7 +51,20 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
                 .load(imgUrl)
                 .into(holder.popular_image);
 
+        holder.popular_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickDetail(item);
+            }
+        });
+    }
 
+    private void onClickDetail(Items item) {
+        Intent intent = new Intent(context, DetailItemActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_item", item);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
 
@@ -61,6 +81,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         TextView popular_title;
         TextView popular_price_sell;
         TextView popular_quantity_sold;
+        ConstraintLayout popular_layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +90,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
             popular_image = itemView.findViewById(R.id.popular_image);
             popular_price_sell = itemView.findViewById(R.id.popular_price_sell);
             popular_quantity_sold = itemView.findViewById(R.id.popular_quantity_sold);
+            popular_layout = itemView.findViewById(R.id.popular_layout);
         }
     }
 }

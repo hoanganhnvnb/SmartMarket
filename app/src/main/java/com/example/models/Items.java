@@ -1,6 +1,8 @@
 package com.example.models;
 
-public class Items {
+import java.io.Serializable;
+
+public class Items implements Serializable {
     public int id;
     public long barcode;
     public String title;
