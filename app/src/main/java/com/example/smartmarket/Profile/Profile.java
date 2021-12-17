@@ -26,8 +26,7 @@ public class Profile extends Base {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent( Profile.this, DashboardActivity.class);
-                startActivity(i);
+                onBackPressed();
             }
         });
 
@@ -55,6 +54,7 @@ public class Profile extends Base {
             public void onClick(View view) {
                 Intent i = new Intent( Profile.this, LoginActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 

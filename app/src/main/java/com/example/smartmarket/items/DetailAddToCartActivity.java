@@ -117,6 +117,7 @@ public class DetailAddToCartActivity extends Base {
                 Toast.makeText(DetailAddToCartActivity.this, "Succeed", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(DetailAddToCartActivity.this, DashboardActivity.class);
                 startActivity(intent);
+                finish();
             }
 
             @Override

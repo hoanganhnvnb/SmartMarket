@@ -62,6 +62,7 @@ public class IntroductionActivity extends Base {
                         .makeSceneTransitionAnimation(IntroductionActivity.this, pairs);
                 startActivity(new Intent(IntroductionActivity.this, LoginActivity.class)
                         , options.toBundle());
+                finish();
             }
         }, INTRO_SCREEN_TIME);
     }

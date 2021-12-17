@@ -45,7 +45,7 @@ public class ScanToCartActivity extends Base {
                         intent.putExtras(bundle);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(ScanToCartActivity.this, "Khong thay hang hoa co barcode nay", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ScanToCartActivity.this, "Không thấy hàng hóa có mã này", Toast.LENGTH_SHORT).show();
                     }
                 }
 

@@ -49,7 +49,6 @@ public class DetailItemActivity extends Base {
         Picasso.with(this)
                 .load(imgUrl)
                 .into(detail_item_image);
-
         return true;
     }
 

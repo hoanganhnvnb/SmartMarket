@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.example.smartmarket.dashboard.DashboardActivity;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class UserProfile extends Base {
@@ -28,12 +29,17 @@ public class UserProfile extends Base {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent( UserProfile.this, Profile.class);
-                startActivity(i);
+                onBackPressed();
             }
         });
 
+        TextView full_name = findViewById(R.id.full_name);
+        TextInputEditText fullname_profile = findViewById(R.id.fullname_profile);
+        TextInputEditText email_profile = findViewById(R.id.email_profile);
 
+        full_name.setText(app.mUser.username);
+        fullname_profile.setText(app.mUser.first_name + app.mUser.last_name);
+        email_profile.setText(app.mUser.email);
 
     }
 
