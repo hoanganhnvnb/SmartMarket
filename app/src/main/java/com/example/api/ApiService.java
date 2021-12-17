@@ -2,6 +2,7 @@ package com.example.api;
 
 import com.example.main.MarketApp;
 import com.example.models.Cart;
+import com.example.models.CartItems;
 import com.example.models.Category;
 import com.example.models.Items;
 import com.example.models.MessageApi;
@@ -21,10 +22,15 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface ApiService {
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -65,6 +71,10 @@ public interface ApiService {
     @GET("items/api/items")
     Call<ArrayList<Items>> getAllItemsApi();
 
+    //get items by barcode
+    @GET("items/api/items/get/{barcode}")
+    Call<Items> getItemsByBarcode(@Path("barcode") long barcode);
+
 
     // USER API----------------------------------------------------------
     // register user
@@ -79,7 +89,38 @@ public interface ApiService {
     @POST("user/api/login")
     Call<Token> loginUser(@Body User user);
 
+    // get user login
+    @GET("user/api/info")
+    Call<User> getMyUser();
+
     // CART API-----------------------------------------------------------
     @POST("cart/api/carts")
     Call<Cart> createCart();
+
+    @GET("cart/api/carts/cart_active")
+    Call<Cart> getActiveCart();
+
+    // CART ITEMS API-----------------------------------------------------
+    @GET("cart/api/cart_items/cart/{cart_id}")
+    Call<ArrayList<CartItems>> getCartItems(@Path("cart_id") int cart_id);
+
+    @FormUrlEncoded
+    @POST("cart/api/cart_items")
+    Call<CartItems> insertCartItem(@Field("cart") int cartId,
+                                   @Field("items") int itemId,
+                                   @Field("quantity") int quantity);
+
+    // update cartItem
+    @FormUrlEncoded
+    @PUT("cart/api/cart_items/{id}")
+    Call<MessageApi> updateCartItem(@Path("id") int id,
+                                    @Field("cart") int cart_id,
+                                    @Field("items") int item_id,
+                                    @Field("quantity") int qty);
+
+    //delete cartItem
+    @DELETE("cart/api/cart_items/{id}")
+    Call<MessageApi> deleteCartItem(@Path("id") int id);
+
+
 }

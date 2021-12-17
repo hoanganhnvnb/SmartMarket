@@ -9,8 +9,8 @@ public class Items implements Serializable {
     public String description;
     public int category;
     public String image;
-    public double importPrice;
-    public double sellPrice;
+    public int importPrice;
+    public int sellPrice;
     public int quantity;
     public String companyName;
     public boolean active;
@@ -32,7 +32,7 @@ public class Items implements Serializable {
     }
 
     public Items(int id, long barcode, String title, String description, int category, String image,
-                 double importPrice, double sellPrice, int quantity, String companyName, boolean active, int quantity_sold) {
+                 int importPrice, int sellPrice, int quantity, String companyName, boolean active, int quantity_sold) {
         this.id = id;
         this.barcode = barcode;
         this.title = title;

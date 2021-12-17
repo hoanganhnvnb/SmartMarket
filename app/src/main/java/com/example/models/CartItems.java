@@ -1,6 +1,8 @@
 package com.example.models;
 
-public class CartItems {
+import java.io.Serializable;
+
+public class CartItems implements Serializable {
     public int id;
     public int cart;
     public Items items;

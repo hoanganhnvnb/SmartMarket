@@ -23,6 +23,7 @@ import com.example.smartmarket.Profile.Profile;
 import com.example.smartmarket.R;
 import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.scan.ScanActivity;
+import com.example.smartmarket.scan.ScanToCartActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
@@ -44,23 +45,28 @@ public class DashboardActivity extends Base {
     public static ArrayList<Cart> cartArrayList;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton scanButton;
+    TextView dash_username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        dash_username = (TextView) findViewById(R.id.dash_username);
+
         createRVDash();
 
         createBottomNav();
 
-        createCart();
-
     }
 
     private void createCart() {
-
-        ApiService.apiService.createCart().enqueue(new Callback<Cart>() {
+        if (app.mCart != null) {
+            if (app.mCart.active) {
+                return;
+            }
+        }
+        ApiService.apiService.getActiveCart().enqueue(new Callback<Cart>() {
             @Override
             public void onResponse(Call<Cart> call, Response<Cart> response) {
                 Cart cart = response.body();
@@ -79,6 +85,29 @@ public class DashboardActivity extends Base {
     @Override
     public void onResume() {
         super.onResume();
+
+        createCart();
+
+        if (!app.itemsPopular.isEmpty()) {
+            popularAdapter = new PopularAdapter(DashboardActivity.this, app.itemsPopular);
+            recyclerViewPopular.setAdapter(popularAdapter);
+        } else {
+            ApiService.apiService.getPopularItemsApi().enqueue(new Callback<ArrayList<Items>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Items>> call, Response<ArrayList<Items>> response) {
+                    if (response.body() != null) {
+                        app.itemsPopular = response.body();
+                        popularAdapter = new PopularAdapter(DashboardActivity.this, app.itemsPopular);
+                        recyclerViewPopular.setAdapter(popularAdapter);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<Items>> call, Throwable t) {
+
+                }
+            });
+        }
     }
 
     private void createRVDash() {
@@ -94,36 +123,39 @@ public class DashboardActivity extends Base {
         recyclerViewPopular = (RecyclerView) findViewById(R.id.dash_popular_rv);
         recyclerViewPopular.setLayoutManager(linearLayoutManagerPop);
 
-        ApiService.apiService.getAllCategoryApi().enqueue(new Callback<ArrayList<Category>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Category>> call, Response<ArrayList<Category>> response) {
-                Toast.makeText(DashboardActivity.this, "Call Category Api Succeed", Toast.LENGTH_SHORT).show();
+        if (!app.categories.isEmpty()) {
+            categoryAdapter = new CategoryAdapter(app.categories);
+            recyclerViewCategory.setAdapter(categoryAdapter);
+        } else {
+            ApiService.apiService.getAllCategoryApi().enqueue(new Callback<ArrayList<Category>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Category>> call, Response<ArrayList<Category>> response) {
+                    if (response.body() != null) {
+                        app.categories = response.body();
+                        categoryAdapter = new CategoryAdapter(app.categories);
+                        recyclerViewCategory.setAdapter(categoryAdapter);
+                    }
+                }
 
-                if (response.body() != null) {
-                    app.categories = response.body();
-                    categoryAdapter = new CategoryAdapter(app.categories);
-                    recyclerViewCategory.setAdapter(categoryAdapter);
+                @Override
+                public void onFailure(Call<ArrayList<Category>> call, Throwable t) {
+                    Toast.makeText(DashboardActivity.this, "Call Category Api ERROR", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        ApiService.apiService.getMyUser().enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
+                if (user != null) {
+                    app.mUser = user;
+                    dash_username.setText("Chào " + user.username +"!");
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Category>> call, Throwable t) {
-                Toast.makeText(DashboardActivity.this, "Call Category Api ERROR", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        ApiService.apiService.getPopularItemsApi().enqueue(new Callback<ArrayList<Items>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Items>> call, Response<ArrayList<Items>> response) {
-                if (response.body() != null) {
-                    app.itemsPopular = response.body();
-                    popularAdapter = new PopularAdapter(DashboardActivity.this, app.itemsPopular);
-                    recyclerViewPopular.setAdapter(popularAdapter);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Items>> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
 
             }
         });
@@ -159,7 +191,11 @@ public class DashboardActivity extends Base {
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardActivity.this, ScanActivity.class));
+                if (app.mUser.is_superuser) {
+                    startActivity(new Intent(DashboardActivity.this, ScanActivity.class));
+                } else {
+                    startActivity(new Intent(DashboardActivity.this, ScanToCartActivity.class));
+                }
             }
         });
     }

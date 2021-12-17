@@ -15,10 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMarket">
-
+        <activity
+            android:name=".items.UpdateDeleteCartItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".scan.ScanToCartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".items.DetailAddToCartActivity"
+            android:exported="false" />
         <activity
             android:name=".Profile.support"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".cart.CartActivity"
             android:exported="false" />
