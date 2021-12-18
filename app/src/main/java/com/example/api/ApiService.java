@@ -1,5 +1,10 @@
 package com.example.api;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.example.main.MarketApp;
 import com.example.models.Cart;
 import com.example.models.CartItems;
@@ -33,6 +38,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiService {
+
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
         @Override
         public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
@@ -89,9 +95,16 @@ public interface ApiService {
     @POST("user/api/login")
     Call<Token> loginUser(@Body User user);
 
+    @FormUrlEncoded
+    @POST("user/api/token/refresh")
+    Call<Token> refreshToken(@Field("refresh") String refresh);
+
     // get user login
     @GET("user/api/info")
     Call<User> getMyUser();
+
+    @GET("user/api/info")
+    Call<User> getMyUser(@Header("Authorization") String token);
 
     // CART API-----------------------------------------------------------
     @POST("cart/api/carts")

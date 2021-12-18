@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.example.adapter.CategoryAdapter;
 import com.example.adapter.PopularAdapter;
 import com.example.api.ApiService;
+import com.example.main.MarketApp;
 import com.example.models.Cart;
 import com.example.models.Category;
 import com.example.models.Items;
@@ -22,6 +24,7 @@ import com.example.smartmarket.Base;
 import com.example.smartmarket.Profile.Profile;
 import com.example.smartmarket.R;
 import com.example.smartmarket.cart.CartActivity;
+import com.example.smartmarket.login.LoginActivity;
 import com.example.smartmarket.scan.ScanActivity;
 import com.example.smartmarket.scan.ScanToCartActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -46,6 +49,8 @@ public class DashboardActivity extends Base {
     BottomNavigationView bottomNavigationView;
     FloatingActionButton scanButton;
     TextView dash_username;
+    private long backTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,7 +177,10 @@ public class DashboardActivity extends Base {
                         System.out.println("Home");
                         break;
                     case R.id.menu_notification:
-                        System.out.println("Notification");
+                        SharedPreferences tokenShared = getSharedPreferences(MarketApp.SHARED_PREFERENCE_TOKEN, MODE_PRIVATE);
+                        SharedPreferences.Editor editorToken = tokenShared.edit();
+                        String tken = tokenShared.getString("token", null);
+                        System.out.println(tken);
                         break;
                     case R.id.menu_cart:
                         System.out.println("Cart");
@@ -200,7 +208,19 @@ public class DashboardActivity extends Base {
         });
     }
 
+    @Override
+    public void onBackPressed() {
 
+        if (backTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(DashboardActivity.this, "Nhấn back thêm một lần nữa để thoát", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backTime = System.currentTimeMillis();
+    }
 
 }
 

@@ -4,6 +4,7 @@ package com.example.smartmarket.login;
 import android.Manifest;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Pair;
@@ -18,6 +19,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.api.ApiService;
+import com.example.main.MarketApp;
 import com.example.models.MessageApi;
 import com.example.models.Token;
 import com.example.models.User;
@@ -36,6 +38,8 @@ public class LoginActivity extends Base {
     TextView login_title, login_subtitle;
     TextInputLayout login_username, login_password;
     Button login_forget_pass, login_btn, login_call_signup;
+    private long backTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +75,62 @@ public class LoginActivity extends Base {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(LoginActivity.this, new String[] {Manifest.permission.CAMERA}, 101);
         }
+
+        checkTokenAccess();
     }
 
+    private void checkTokenAccess() {
+        SharedPreferences tokenShared = getSharedPreferences(MarketApp.SHARED_PREFERENCE_TOKEN, MODE_PRIVATE);
+        SharedPreferences.Editor editorToken = tokenShared.edit();
+        String token = tokenShared.getString("token", null);
+        String refresh = tokenShared.getString("refresh", null);
+        if (token != null && refresh != null) {
+            ApiService.apiService.getMyUser("Bearer " + token).enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if (response.code() == 401) {
+                        refreshToken();
+                    } else if (response.code() == 200) {
+                        MarketApp.token = new Token(token, refresh);
+                        app.mUser = response.body();
+                        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                        finish();
+                    }
+                }
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+                }
+            });
+        }
+    }
+
+    private void refreshToken() {
+        SharedPreferences tokenShared = getSharedPreferences(MarketApp.SHARED_PREFERENCE_TOKEN, MODE_PRIVATE);
+        SharedPreferences.Editor editorToken = tokenShared.edit();
+        String refresh = tokenShared.getString("refresh", null);
+        ApiService.apiService.refreshToken(refresh).enqueue(new Callback<Token>() {
+            @Override
+            public void onResponse(Call<Token> call, Response<Token> response) {
+                if (response.code() == 200) {
+                    editorToken.putString("token", response.body().access);
+                    editorToken.apply();
+                    MarketApp.token = new Token(response.body().access, refresh);
+                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Token> call, Throwable t) {
+
+            }
+        });
+    }
+
+
     public void login() {
+        SharedPreferences tokenShared = getSharedPreferences(MarketApp.SHARED_PREFERENCE_TOKEN, MODE_PRIVATE);
+        SharedPreferences.Editor editorToken = tokenShared.edit();
         String username = login_username.getEditText().getText().toString();
         String pass = login_password.getEditText().getText().toString();
 
@@ -87,8 +144,13 @@ public class LoginActivity extends Base {
                 Token token = response.body();
                 if (token != null) {
                     Toast.makeText(LoginActivity.this, "Login succeed", Toast.LENGTH_SHORT).show();
-                    app.token = token;
+                    MarketApp.token = token;
+
+                    editorToken.putString("token", token.access);
+                    editorToken.putString("refresh", token.refresh);
+                    editorToken.apply();
                     startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                    finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
                 }
@@ -113,5 +175,19 @@ public class LoginActivity extends Base {
 
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, pairs);
         startActivity(new Intent(this, SignupActivity.class), options.toBundle());
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (backTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(LoginActivity.this, "Nhấn back thêm một lần nữa để thoát", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backTime = System.currentTimeMillis();
     }
 }

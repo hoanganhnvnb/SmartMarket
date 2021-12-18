@@ -1,6 +1,7 @@
 package com.example.main;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.models.Cart;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 
 
 public class MarketApp extends Application {
+
+    public static final String SHARED_PREFERENCE_TOKEN = "Token";
 
     public ArrayList<Category> categories = new ArrayList<>();
     public ArrayList<Items> itemsPopular = new ArrayList<>();

@@ -116,6 +116,7 @@ public class DetailAddToCartActivity extends Base {
             public void onResponse(Call<CartItems> call, Response<CartItems> response) {
                 Toast.makeText(DetailAddToCartActivity.this, "Succeed", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(DetailAddToCartActivity.this, DashboardActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
