@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -26,7 +27,10 @@ import com.example.models.User;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.example.smartmarket.dashboard.DashboardActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -149,6 +153,31 @@ public class LoginActivity extends Base {
                     editorToken.putString("token", token.access);
                     editorToken.putString("refresh", token.refresh);
                     editorToken.apply();
+
+                    // Send new registration token to user login
+                    FirebaseMessaging.getInstance().getToken()
+                            .addOnCompleteListener(new OnCompleteListener<String>() {
+                                @Override
+                                public void onComplete(@NonNull Task<String> task) {
+                                    if (!task.isSuccessful()) {
+                                        Toast.makeText(LoginActivity.this, "Send new registration fail", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+
+                                    // Get new registration token
+                                    String regisToken = task.getResult();
+                                    ApiService.apiService.updateRegistrationToken("Bearer " + token.access, regisToken).enqueue(new Callback<User>() {
+                                        @Override
+                                        public void onResponse(Call<User> call, Response<User> response) {
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<User> call, Throwable t) {
+                                        }
+                                    });
+                                }
+                            });
+
                     startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                     finish();
                 } else {

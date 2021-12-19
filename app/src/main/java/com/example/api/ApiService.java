@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -33,8 +34,10 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface ApiService {
@@ -56,7 +59,7 @@ public interface ApiService {
             .create();
 
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://18.220.110.46:8000/")
+            .baseUrl(MarketApp.API_ROOT_URL + "/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(httpClient.build())
             .build()
@@ -81,6 +84,17 @@ public interface ApiService {
     @GET("items/api/items/get/{barcode}")
     Call<Items> getItemsByBarcode(@Path("barcode") long barcode);
 
+    @Multipart
+    @POST("items/api/items")
+    Call<Items> insertItem(@Part("barcode") RequestBody barcode,
+                           @Part("title") RequestBody title,
+                           @Part("description") RequestBody des,
+                           @Part("category") RequestBody category,
+                           @Part("image") Multipart image,
+                           @Part("importPrice") RequestBody importPrice,
+                           @Part("sellPrice") RequestBody sellPrice,
+                           @Part("quantity") RequestBody quantity,
+                           @Part("companyName") RequestBody companyName);
 
     // USER API----------------------------------------------------------
     // register user
@@ -105,6 +119,11 @@ public interface ApiService {
 
     @GET("user/api/info")
     Call<User> getMyUser(@Header("Authorization") String token);
+
+    @FormUrlEncoded
+    @PUT("user/api/device_token")
+    Call<User> updateRegistrationToken(@Header("Authorization") String tokenAuth,
+                                       @Field("token") String token);
 
     // CART API-----------------------------------------------------------
     @POST("cart/api/carts")

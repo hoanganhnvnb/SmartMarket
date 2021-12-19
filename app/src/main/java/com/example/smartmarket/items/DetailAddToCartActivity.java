@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.api.ApiService;
+import com.example.main.MarketApp;
 import com.example.models.CartItems;
 import com.example.models.Items;
 import com.example.smartmarket.Base;
@@ -58,7 +59,7 @@ public class DetailAddToCartActivity extends Base {
         detail_add_quantity_sold.setText(String.valueOf(item.quantity_sold));
         detail_add_quantity_i.setText(String.valueOf(item.quantity));
 
-        String imgUrl = "http://18.220.110.46:8000" + item.image;
+        String imgUrl = MarketApp.API_ROOT_URL + item.image;
         Picasso.with(this)
                 .load(imgUrl)
                 .into(detail_add_image);
