@@ -1,6 +1,7 @@
 package com.example.smartmarket.scan;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
+import com.example.smartmarket.addItems.AddActivity;
 
 public class ScanActivity extends Base {
 
@@ -24,7 +26,12 @@ public class ScanActivity extends Base {
         setContentView(R.layout.activity_scan);
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
         mCodeScanner = new CodeScanner(this, scannerView);
-        mCodeScanner.setDecodeCallback(result -> runOnUiThread(() -> Toast.makeText(com.example.smartmarket.scan.ScanActivity.this, result.getText(), Toast.LENGTH_LONG).show()));
+        mCodeScanner.setDecodeCallback(result -> runOnUiThread(() -> {
+                    Intent intent = new Intent(ScanActivity.this, AddActivity.class);
+                    intent.putExtra("barcode", result.getText());
+                    startActivity(intent);
+                }
+                ));
         scannerView.setOnClickListener(v -> mCodeScanner.startPreview());
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_DENIED) {
