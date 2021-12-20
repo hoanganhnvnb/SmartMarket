@@ -1,20 +1,13 @@
 package com.example.smartmarket.Profile;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
-import com.example.smartmarket.dashboard.DashboardActivity;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class UserProfile extends Base {
 
@@ -36,10 +29,13 @@ public class UserProfile extends Base {
         TextView full_name = findViewById(R.id.full_name);
         TextInputEditText fullname_profile = findViewById(R.id.fullname_profile);
         TextInputEditText email_profile = findViewById(R.id.email_profile);
+        TextView email = findViewById(R.id.email_12);
 
         full_name.setText(app.mUser.username);
+        email.setText(app.mUser.email);
         fullname_profile.setText(app.mUser.first_name + app.mUser.last_name);
         email_profile.setText(app.mUser.email);
+
 
     }
 
