@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMarket">
         <activity
+            android:name=".Profile.ListOrder"
+            android:exported="true" />
+        <activity
             android:name=".cart.OrderActivity"
             android:exported="false" />
         <activity

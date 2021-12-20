@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/card_bg"
+    android:layout_marginTop="16dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="10dp"
+    android:elevation="30dp">
+
+
+    <TextView
+        android:id="@+id/orderHistory_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đã thanh toán  "
+        android:drawableStart="@drawable/ic_v"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:textSize="16dp"
+        android:textStyle="italic"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24,Oct"
+        app:layout_constraintStart_toEndOf="@id/orderHistory_status"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:textSize="16dp"
+        android:textStyle="italic"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/orderHistory_item"
+        android:layout_width="300dp"
+        android:layout_height="34dp"
+        android:text="Mì trộn siêu cay siêu to "
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderHistory_status" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Tổng Bill:  "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderHistory_item"
+        app:layout_constraintHorizontal_bias="0"
+        android:textSize="16dp"
+        android:textStyle="italic"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="120000 đồng"
+        android:textSize="16dp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/orderHistory_item" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/ic_t"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,13 +2,6 @@ package com.example.smartmarket.Profile;
 
 
 
-import com.example.main.MarketApp;
-import com.example.smartmarket.Base;
-import com.example.smartmarket.R;
-import com.example.smartmarket.dashboard.DashboardActivity;
-import com.example.smartmarket.login.LoginActivity;
-import com.example.smartmarket.items.ListItemsActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,9 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.main.MarketApp;
+import com.example.smartmarket.Base;
+import com.example.smartmarket.R;
+import com.example.smartmarket.items.ListItemsActivity;
+import com.example.smartmarket.login.LoginActivity;
+
 public class Profile extends Base {
 
-    Button button1,button2,button3, logout_btn,button5;
+    Button button1,button2,button3, logout_btn,button5,button6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +41,15 @@ public class Profile extends Base {
             }
         });
 
+
         button3 = (Button)findViewById(R.id.btn_user_list);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent( Profile.this, UserList.class);
                 startActivity(i);
+
+
             }
         });
 
@@ -72,6 +74,16 @@ public class Profile extends Base {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent( Profile.this, support.class);
+                startActivity(i);
+            }
+        });
+
+
+        button6 = (Button)findViewById(R.id.btn_list_items);
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( Profile.this,ListItemsActivity.class);
                 startActivity(i);
             }
         });
