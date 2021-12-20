@@ -11,6 +11,7 @@ import com.example.models.CartItems;
 import com.example.models.Category;
 import com.example.models.Items;
 import com.example.models.MessageApi;
+import com.example.models.Notify;
 import com.example.models.Token;
 import com.example.models.User;
 import com.google.gson.Gson;
@@ -154,5 +155,12 @@ public interface ApiService {
     @DELETE("cart/api/cart_items/{id}")
     Call<MessageApi> deleteCartItem(@Path("id") int id);
 
+
+    // NOTIFICATION API--------------------------------------------------------------
+    @GET("notification/api/notifications")
+    Call<ArrayList<Notify>> getAllNotifyInfo();
+
+    @PUT("notification/api/notifications/{id}")
+    Call<MessageApi> markIsReadNotify(@Path("id") int id);
 
 }
