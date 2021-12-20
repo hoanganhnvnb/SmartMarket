@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Created by : Santosh Kumar Dash:- http://santoshdash.epizy.com
  */
 
-public class MyTextViewMeriendaRegular extends TextView {
+public class MyTextViewMeriendaRegular extends androidx.appcompat.widget.AppCompatTextView {
 
     public MyTextViewMeriendaRegular(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

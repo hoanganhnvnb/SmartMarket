@@ -1,0 +1,68 @@
+package com.example.fcm;
+
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+
+import com.example.main.MarketApp;
+import com.example.smartmarket.R;
+import com.example.smartmarket.login.LoginActivity;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.Date;
+
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
+
+    @Override
+    public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
+        super.onMessageReceived(remoteMessage);
+
+        RemoteMessage.Notification notification = remoteMessage.getNotification();
+
+        if (notification == null) {
+            return;
+        }
+
+        String title = notification.getTitle();
+        String body = notification.getBody();
+
+        sendNoti(title, body);
+    }
+
+    private void sendNoti(String title, String body) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, MarketApp.CHANNEL_ID)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentIntent(pendingIntent);
+
+        Notification notification = notificationBuilder.build();
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (notificationManager != null) {
+            notificationManager.notify(getNotificationId(), notification);
+        }
+    }
+
+    private int getNotificationId() {
+        return (int) new Date().getTime();
+    }
+
+    @Override
+    public void onNewToken(@NonNull String s) {
+        super.onNewToken(s);
+
+        Log.v("shop", s);
+    }
+}

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.api.ApiService;
+import com.example.main.MarketApp;
 import com.example.models.CartItems;
 import com.example.models.Items;
 import com.example.models.MessageApi;
@@ -66,7 +67,7 @@ public class UpdateDeleteCartItemActivity extends AppCompatActivity {
         quantityItem = cartItems.quantity;
         ud_quantity_ud.setText(String.valueOf(quantityItem));
 
-        String imgUrl = "http://18.220.110.46:8000" + item.image;
+        String imgUrl = MarketApp.API_ROOT_URL + item.image;
         Picasso.with(this)
                 .load(imgUrl)
                 .into(ud_image);

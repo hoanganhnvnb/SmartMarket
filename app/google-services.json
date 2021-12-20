@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "341247151858",
+    "project_id": "smartmarketuet",
+    "storage_bucket": "smartmarketuet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341247151858:android:36138d8a302fab9a518a6b",
+        "android_client_info": {
+          "package_name": "com.example.smartmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341247151858-m85sq1n7ser1ok2ae2sbi5pb35id0ljb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClUpOWeAX0Buxt_2UCQav74tMAw7Zn0Zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341247151858-m85sq1n7ser1ok2ae2sbi5pb35id0ljb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

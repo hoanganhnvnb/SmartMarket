@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.main.MarketApp;
 import com.example.models.CartItems;
 import com.example.models.Items;
 import com.example.smartmarket.R;
@@ -49,7 +50,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
         holder.cartitem_quantity.setText(String.valueOf(cart_item.quantity));
         holder.cartitem_total.setText(String.valueOf(cart_item.quantity * item.sellPrice));
 
-        String imgUrl = "http://18.220.110.46:8000" + item.image;
+        String imgUrl = MarketApp.API_ROOT_URL + item.image;
         Picasso.with(holder.itemView.getContext())
                 .load(imgUrl)
                 .into(holder.cartitem_image);
