@@ -14,7 +14,11 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmartMarket">
+        android:theme="@style/Theme.SmartMarket"
+        android:requestLegacyExternalStorage="true">
+        <activity
+            android:name=".addItems.AddImageItemActivity"
+            android:exported="false" />
         <activity
             android:name=".Profile.ListOrder"
             android:exported="true" />
@@ -87,7 +91,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>

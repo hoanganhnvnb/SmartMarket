@@ -46,4 +46,15 @@ public class Items implements Serializable {
         this.active = active;
         this.quantity_sold = quantity_sold;
     }
+
+    public Items(long barcode, String title, String description, int category, int importPrice, int sellPrice, int quantity, String companyName) {
+        this.barcode = barcode;
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.importPrice = importPrice;
+        this.sellPrice = sellPrice;
+        this.quantity = quantity;
+        this.companyName = companyName;
+    }
 }
