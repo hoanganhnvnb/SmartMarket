@@ -40,12 +40,9 @@ public class ListItemsActivity extends Base {
         CreateRVItems();
     }
 
-    private void CreateRVItems() {
-        LinearLayoutManager linearLayoutManagerPop =
-                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-
-        recyclerViewItem = (RecyclerView) findViewById(R.id.list_view_items);
-        recyclerViewItem.setLayoutManager(linearLayoutManagerPop);
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         ApiService.apiService.getAllItemsApi().enqueue(new Callback<ArrayList<Items>>() {
             @Override
@@ -62,5 +59,13 @@ public class ListItemsActivity extends Base {
 
             }
         });
+    }
+
+    private void CreateRVItems() {
+        LinearLayoutManager linearLayoutManagerPop =
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
+        recyclerViewItem = (RecyclerView) findViewById(R.id.list_view_items);
+        recyclerViewItem.setLayoutManager(linearLayoutManagerPop);
     }
 }

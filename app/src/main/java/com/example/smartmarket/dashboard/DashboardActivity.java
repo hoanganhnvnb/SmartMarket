@@ -25,6 +25,7 @@ import com.example.smartmarket.Profile.Profile;
 import com.example.smartmarket.R;
 import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.login.LoginActivity;
+import com.example.smartmarket.notification.NotificationActivity;
 import com.example.smartmarket.scan.ScanActivity;
 import com.example.smartmarket.scan.ScanToCartActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -66,11 +67,6 @@ public class DashboardActivity extends Base {
     }
 
     private void createCart() {
-        if (app.mCart != null) {
-            if (app.mCart.active) {
-                return;
-            }
-        }
         ApiService.apiService.getActiveCart().enqueue(new Callback<Cart>() {
             @Override
             public void onResponse(Call<Cart> call, Response<Cart> response) {
@@ -177,10 +173,8 @@ public class DashboardActivity extends Base {
                         System.out.println("Home");
                         break;
                     case R.id.menu_notification:
-                        SharedPreferences tokenShared = getSharedPreferences(MarketApp.SHARED_PREFERENCE_TOKEN, MODE_PRIVATE);
-                        SharedPreferences.Editor editorToken = tokenShared.edit();
-                        String tken = tokenShared.getString("token", null);
-                        System.out.println(tken);
+                        System.out.println("Notification");
+                        startActivity(new Intent(DashboardActivity.this, NotificationActivity.class));
                         break;
                     case R.id.menu_cart:
                         System.out.println("Cart");

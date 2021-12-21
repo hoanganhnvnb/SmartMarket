@@ -11,6 +11,8 @@ import com.example.models.CartItems;
 import com.example.models.Category;
 import com.example.models.Items;
 import com.example.models.MessageApi;
+import com.example.models.Notify;
+import com.example.models.Order;
 import com.example.models.Token;
 import com.example.models.User;
 import com.google.gson.Gson;
@@ -20,6 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.Interceptor;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -84,17 +87,17 @@ public interface ApiService {
     @GET("items/api/items/get/{barcode}")
     Call<Items> getItemsByBarcode(@Path("barcode") long barcode);
 
-    @Multipart
     @POST("items/api/items")
-    Call<Items> insertItem(@Part("barcode") RequestBody barcode,
-                           @Part("title") RequestBody title,
-                           @Part("description") RequestBody des,
-                           @Part("category") RequestBody category,
-                           @Part("image") Multipart image,
-                           @Part("importPrice") RequestBody importPrice,
-                           @Part("sellPrice") RequestBody sellPrice,
-                           @Part("quantity") RequestBody quantity,
-                           @Part("companyName") RequestBody companyName);
+    Call<Items> insertItem(@Body Items items);
+
+    @PUT("items/api/items/{barcode}")
+    Call<Items> editItem(@Path("barcode") long barcodeEdit,
+                         @Body Items items);
+
+    @Multipart
+    @POST("items/api/items/add_image/{barcode}")
+    Call<MessageApi> addImage(@Path("barcode") long barcodeEdit,
+                              @Part MultipartBody.Part image);
 
     // USER API----------------------------------------------------------
     // register user
@@ -153,6 +156,30 @@ public interface ApiService {
     //delete cartItem
     @DELETE("cart/api/cart_items/{id}")
     Call<MessageApi> deleteCartItem(@Path("id") int id);
+
+
+    // NOTIFICATION API--------------------------------------------------------------
+    @GET("notification/api/notifications")
+    Call<ArrayList<Notify>> getAllNotifyInfo();
+
+    @PUT("notification/api/notifications/{id}")
+    Call<MessageApi> markIsReadNotify(@Path("id") int id);
+
+
+    // ORDER API----------------------------------------------------------------------
+    @GET("order/api/orders/his_order")
+    Call<ArrayList<Order>> getHistoryOrder();
+
+    @FormUrlEncoded
+    @POST("order/api/orders")
+    Call<MessageApi> createOrder(@Field("cart") int cart,
+                                 @Field("user") int user,
+                                 @Field("description") String des);
+
+    @FormUrlEncoded
+    @PUT("order/api/orders/paid/{id}")
+    Call<MessageApi> paidOrder(@Path("id") int id,
+                               @Field("is_completed") boolean i_c);
 
 
 }
