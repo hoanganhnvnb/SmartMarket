@@ -40,6 +40,8 @@
         <activity
             android:name=".cart.CartActivity"
             android:exported="false" />
+        <activity android:name=".notification.NotificationActivity"
+            android:exported="true" />
         <activity
             android:name=".Profile.UserList"
             android:exported="true" />

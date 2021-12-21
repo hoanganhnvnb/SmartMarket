@@ -9,8 +9,8 @@
         android:icon="@drawable/ic_home"/>
     <item
         android:id="@+id/menu_notification"
-        android:title="Notification"
-        app:showAsAction="ifRoom"
+        android:title="@string/action_notify"
+        app:showAsAction="always"
         android:icon="@drawable/ic_notification"/>
 
     <item
