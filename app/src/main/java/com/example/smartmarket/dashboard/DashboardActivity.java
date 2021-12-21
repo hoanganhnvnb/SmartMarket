@@ -27,6 +27,7 @@ import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.login.LoginActivity;
 import com.example.smartmarket.notification.NotificationActivity;
 import com.example.smartmarket.scan.ScanActivity;
+import com.example.smartmarket.scan.ScanQRPayActivity;
 import com.example.smartmarket.scan.ScanToCartActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -178,7 +179,12 @@ public class DashboardActivity extends Base {
                         break;
                     case R.id.menu_cart:
                         System.out.println("Cart");
-                        startActivity(new Intent(DashboardActivity.this, CartActivity.class));
+                        if (app.mUser.is_superuser) {
+                            startActivity(new Intent(DashboardActivity.this, ScanQRPayActivity.class));
+                        } else {
+                            startActivity(new Intent(DashboardActivity.this, CartActivity.class));
+                        }
+
                         break;
                     case R.id.menu_user:
                         System.out.println("User");
