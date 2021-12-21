@@ -19,9 +19,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="30dp"
-            android:layout_toEndOf="@+id/btn_return_userList"
+            android:layout_toEndOf="@+id/btn_return_dashboard"
             android:text="Thông Báo"
             android:textColor="@color/black"
             android:gravity="center"
@@ -29,7 +29,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btn_return_userList"
+            android:id="@+id/btn_return_dashboard"
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:layout_marginVertical="0dp"
@@ -38,15 +38,18 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
     </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_view_items"
-        android:paddingLeft="10dp"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/header_list_items"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        android:layout_height="match_parent" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_view_notifies"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="115dp"
+            android:layout_marginBottom="0dp"
+            android:paddingLeft="10dp" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
