@@ -12,6 +12,7 @@ import com.example.models.CartItems;
 import com.example.models.Category;
 import com.example.models.Items;
 import com.example.models.Notify;
+import com.example.models.Order;
 import com.example.models.Token;
 import com.example.models.User;
 
@@ -30,6 +31,7 @@ public class MarketApp extends Application {
     public ArrayList<Items> items = new ArrayList<>();
     public ArrayList<CartItems> cartItems = new ArrayList<>();
     public ArrayList<Notify> notifies = new ArrayList<>();
+    public ArrayList<Order> historyOrder = new ArrayList<>();
 
     public User mUser;
     public static Token token;

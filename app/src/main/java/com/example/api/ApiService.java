@@ -12,6 +12,7 @@ import com.example.models.Category;
 import com.example.models.Items;
 import com.example.models.MessageApi;
 import com.example.models.Notify;
+import com.example.models.Order;
 import com.example.models.Token;
 import com.example.models.User;
 import com.google.gson.Gson;
@@ -166,7 +167,19 @@ public interface ApiService {
 
 
     // ORDER API----------------------------------------------------------------------
+    @GET("order/api/orders/his_order")
+    Call<ArrayList<Order>> getHistoryOrder();
 
+    @FormUrlEncoded
+    @POST("order/api/orders")
+    Call<MessageApi> createOrder(@Field("cart") int cart,
+                                 @Field("user") int user,
+                                 @Field("description") String des);
+
+    @FormUrlEncoded
+    @PUT("order/api/orders/paid/{id}")
+    Call<MessageApi> paidOrder(@Path("id") int id,
+                               @Field("is_completed") boolean i_c);
 
 
 }

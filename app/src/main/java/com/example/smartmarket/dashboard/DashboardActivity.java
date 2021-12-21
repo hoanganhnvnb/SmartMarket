@@ -67,11 +67,6 @@ public class DashboardActivity extends Base {
     }
 
     private void createCart() {
-        if (app.mCart != null) {
-            if (app.mCart.active) {
-                return;
-            }
-        }
         ApiService.apiService.getActiveCart().enqueue(new Callback<Cart>() {
             @Override
             public void onResponse(Call<Cart> call, Response<Cart> response) {
