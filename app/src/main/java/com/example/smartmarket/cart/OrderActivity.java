@@ -261,8 +261,9 @@ public class OrderActivity extends Base {
                             app.mOrder = order;
                             if (order.is_completed) {
                                 Toast.makeText(OrderActivity.this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent( getApplicationContext(), LoginActivity.class);
+                                Intent i = new Intent( OrderActivity.this, LoginActivity.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                dialog.dismiss();
                                 startActivity(i);
                             }
                             else {
