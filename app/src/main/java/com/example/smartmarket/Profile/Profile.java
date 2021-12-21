@@ -17,7 +17,7 @@ import com.example.smartmarket.login.LoginActivity;
 
 public class Profile extends Base {
 
-    Button button1,button2,button3, logout_btn,button5,button6;
+    Button button1,button2,button3, logout_btn,button5,button6, button7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +88,15 @@ public class Profile extends Base {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent( Profile.this,ListItemsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        button7 = (Button)findViewById(R.id.btn_hoadon);
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( Profile.this, ListOrder.class);
                 startActivity(i);
             }
         });
