@@ -30,11 +30,13 @@ public class UserProfile extends Base {
         TextInputEditText fullname_profile = findViewById(R.id.fullname_profile);
         TextInputEditText email_profile = findViewById(R.id.email_profile);
         TextView email = findViewById(R.id.email_12);
+        TextView phone_profile = findViewById(R.id.phoneNumber_profile);
 
         full_name.setText(app.mUser.username);
         email.setText(app.mUser.email);
         fullname_profile.setText(app.mUser.first_name + app.mUser.last_name);
         email_profile.setText(app.mUser.email);
+        phone_profile.setText(app.mUser.phone_number);
 
 
     }

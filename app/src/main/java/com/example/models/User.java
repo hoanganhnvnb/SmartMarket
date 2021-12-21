@@ -7,6 +7,7 @@ public class User {
     public String password;
     public String first_name;
     public String last_name;
+    public String phone_number;
     public boolean is_superuser;
 
     public User(){
@@ -20,13 +21,14 @@ public class User {
         this.last_name = last_name;
     }
 
-    public User(int id, String username, String email, String first_name, String last_name, boolean is_superuser) {
+    public User(int id, String username, String email, String first_name, String last_name, boolean is_superuser, String phone_number) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
         this.is_superuser = is_superuser;
+        this.phone_number = phone_number;
     }
 
 
