@@ -1,15 +1,9 @@
 package com.example.smartmarket.cart;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,6 +12,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.adapter.CartItemOrderAdapter;
 import com.example.api.ApiService;
 import com.example.models.CartItems;
@@ -25,8 +23,6 @@ import com.example.models.MessageApi;
 import com.example.models.Order;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
-import com.example.smartmarket.dashboard.DashboardActivity;
-import com.example.smartmarket.items.UpdateDeleteCartItemActivity;
 
 import java.util.ArrayList;
 
