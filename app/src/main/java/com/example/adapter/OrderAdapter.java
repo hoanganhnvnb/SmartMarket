@@ -1,6 +1,8 @@
 package com.example.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.models.Order;
+import com.example.smartmarket.Profile.HistoryOrderDetailActivity;
 import com.example.smartmarket.R;
+import com.example.smartmarket.items.DetailItemActivity;
 
 import java.util.ArrayList;
 
@@ -46,7 +50,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
     }
 
     private void onClickDetail(Order order) {
-
+        Intent intent = new Intent(context, HistoryOrderDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_order", order);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
 

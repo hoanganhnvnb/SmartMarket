@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.example.adapter.CartItemHistoryAdapter;
 import com.example.adapter.CartItemOrderAdapter;
 import com.example.api.ApiService;
 import com.example.models.CartItems;
@@ -65,7 +66,7 @@ public class HistoryOrderDetailActivity extends Base {
             public void onResponse(Call<ArrayList<CartItems>> call, Response<ArrayList<CartItems>> response) {
                 ArrayList<CartItems> cartItems = response.body();
                 if (cartItems != null) {
-                    adapter = new CartItemOrderAdapter(HistoryOrderDetailActivity.this, cartItems);
+                    adapter = new CartItemHistoryAdapter(HistoryOrderDetailActivity.this, cartItems);
                     order_rv_detail.setAdapter(adapter);
                 }
             }
@@ -76,7 +77,12 @@ public class HistoryOrderDetailActivity extends Base {
             }
         });
         sum_order_detail.setText(String.valueOf(order.order_total));
+        order_date_detail.setText(convertDateTime(order.create_at));
+    }
 
+    private String convertDateTime(String date){
+        String[] parts = date.split("T",2);
+        return parts[0];
     }
 
     private void initView() {
@@ -87,7 +93,6 @@ public class HistoryOrderDetailActivity extends Base {
         pay_method_detail = findViewById(R.id.pay_method_detail);
         sum_order_detail = findViewById(R.id.sum_order_detail);
         order_backButton_detail = findViewById(R.id.order_backButton_detail);
-        order_rv_detail = findViewById(R.id.order_rv_detail);
 
         order_backButton_detail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +102,7 @@ public class HistoryOrderDetailActivity extends Base {
         });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        order_rv_detail = findViewById(R.id.order_cartItem_rvOrder);
+        order_rv_detail = findViewById(R.id.order_rv_detail);
         order_rv_detail.setLayoutManager(linearLayoutManager);
     }
 }

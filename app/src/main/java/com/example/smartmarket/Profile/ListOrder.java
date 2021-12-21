@@ -35,8 +35,6 @@ public class ListOrder extends Base {
             public void onClick(View view) {
                 onBackPressed();
             }
-
-
         });
 
         initView();
