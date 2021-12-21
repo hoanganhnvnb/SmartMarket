@@ -63,6 +63,10 @@ public class Profile extends Base {
                 SharedPreferences.Editor editorToken = tokenShared.edit();
                 editorToken.clear();
                 editorToken.apply();
+                app.mUser = null;
+                app.mCart = null;
+                app.cartItems = null;
+                app.items = null;
                 startActivity(i);
                 Toast.makeText(Profile.this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
                 finish();

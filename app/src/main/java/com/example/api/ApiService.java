@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.Interceptor;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -85,17 +86,17 @@ public interface ApiService {
     @GET("items/api/items/get/{barcode}")
     Call<Items> getItemsByBarcode(@Path("barcode") long barcode);
 
-    @Multipart
     @POST("items/api/items")
-    Call<Items> insertItem(@Part("barcode") RequestBody barcode,
-                           @Part("title") RequestBody title,
-                           @Part("description") RequestBody des,
-                           @Part("category") RequestBody category,
-                           @Part("image") Multipart image,
-                           @Part("importPrice") RequestBody importPrice,
-                           @Part("sellPrice") RequestBody sellPrice,
-                           @Part("quantity") RequestBody quantity,
-                           @Part("companyName") RequestBody companyName);
+    Call<Items> insertItem(@Body Items items);
+
+    @PUT("items/api/items/{barcode}")
+    Call<Items> editItem(@Path("barcode") long barcodeEdit,
+                         @Body Items items);
+
+    @Multipart
+    @POST("items/api/items/add_image/{barcode}")
+    Call<MessageApi> addImage(@Path("barcode") long barcodeEdit,
+                              @Part MultipartBody.Part image);
 
     // USER API----------------------------------------------------------
     // register user
@@ -162,5 +163,10 @@ public interface ApiService {
 
     @PUT("notification/api/notifications/{id}")
     Call<MessageApi> markIsReadNotify(@Path("id") int id);
+
+
+    // ORDER API----------------------------------------------------------------------
+
+
 
 }
