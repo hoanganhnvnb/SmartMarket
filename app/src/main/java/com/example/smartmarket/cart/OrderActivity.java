@@ -1,6 +1,8 @@
 package com.example.smartmarket.cart;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +26,11 @@ import com.example.models.MessageApi;
 import com.example.models.Order;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
+import com.example.smartmarket.login.LoginActivity;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.ArrayList;
 
@@ -32,7 +40,7 @@ import retrofit2.Response;
 
 public class OrderActivity extends Base {
     TextView order_name_user, order_id, order_is_complete, cart_totalOrder;
-
+    ImageView imageView;
     RecyclerView.Adapter adapter;
     RecyclerView order_cartItem_rvOrder;
 
@@ -122,6 +130,7 @@ public class OrderActivity extends Base {
             Toast.makeText(this, "Tiền mặt", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Quét máng", Toast.LENGTH_SHORT).show();
+            openDialogQRcode();
         }
     }
 
@@ -207,5 +216,84 @@ public class OrderActivity extends Base {
         });
 
         dialog.show();
+    }
+
+    private void openDialogQRcode() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        dialog.setContentView(R.layout.dialog_confirm_delete);
+        Window window = dialog.getWindow();
+
+        if (window == null) {
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        dialog.setCancelable(true);
+
+        AppCompatButton accept = dialog.findViewById(R.id.confirm_delete);
+        AppCompatButton reject = dialog.findViewById(R.id.reject_delete);
+        TextView text_dialog = dialog.findViewById(R.id.text_dialog);
+        ImageView QRcode = dialog.findViewById(R.id.img_dialog);
+        text_dialog.setText("Xin chờ xác nhận");
+        reject.setText("Quay lại");
+        accept.setText("Tiếp tục");
+
+        QRcode.setImageBitmap(QRcode());
+        reject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ApiService.apiService.getOrderById(app.mOrder.id).enqueue(new Callback<Order>() {
+                    @Override
+                    public void onResponse(Call<Order> call, Response<Order> response) {
+                        Order order = response.body();
+                        if (order != null) {
+                            app.mOrder = order;
+                            if (order.is_completed) {
+                                Toast.makeText(OrderActivity.this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent( getApplicationContext(), LoginActivity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                            }
+                            else {
+                                Toast.makeText(OrderActivity.this, "Chưa thanh toán đơn hàng", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Order> call, Throwable t) {
+
+                    }
+                });
+
+
+            }
+        });
+
+        dialog.show();
+    }
+
+    public Bitmap QRcode() {
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(String.valueOf(app.mOrder.id), BarcodeFormat.QR_CODE,500,500);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            return bitmap;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+       return null;
     }
 }
