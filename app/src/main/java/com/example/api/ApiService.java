@@ -172,7 +172,7 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("order/api/orders")
-    Call<MessageApi> createOrder(@Field("cart") int cart,
+    Call<Order> createOrder(@Field("cart") int cart,
                                  @Field("user") int user,
                                  @Field("description") String des);
 
@@ -181,5 +181,10 @@ public interface ApiService {
     Call<MessageApi> paidOrder(@Path("id") int id,
                                @Field("is_completed") boolean i_c);
 
+    @DELETE("order/api/orders/{id}")
+    Call<MessageApi> deleteOrder(@Path("id") int id);
+
+    @GET("order/api/orders/update_total/{id}")
+    Call<MessageApi> updateTotalOrder(@Path("id") int id);
 
 }

@@ -36,6 +36,7 @@ public class MarketApp extends Application {
     public User mUser;
     public static Token token;
     public Cart mCart;
+    public Order mOrder;
 
     @Override
     public void onCreate (){

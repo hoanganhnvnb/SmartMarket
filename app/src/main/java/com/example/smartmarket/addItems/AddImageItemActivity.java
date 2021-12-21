@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.api.ApiService;
 import com.example.models.Items;
 import com.example.models.MessageApi;
+import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.example.smartmarket.RealPathUtil;
 import com.example.smartmarket.dashboard.DashboardActivity;
@@ -41,7 +42,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddImageItemActivity extends AppCompatActivity {
+public class AddImageItemActivity extends Base {
 
     private static final int MY_REQUEST_CODE = 10;
     ImageView img_up;

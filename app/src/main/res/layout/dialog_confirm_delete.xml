@@ -8,6 +8,7 @@
     android:elevation="3dp">
 
     <TextView
+        android:id="@+id/text_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Xóa hàng hóa?"

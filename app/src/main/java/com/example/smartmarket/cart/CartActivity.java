@@ -5,6 +5,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -83,6 +84,13 @@ public class CartActivity extends Base {
         scrollView2 = (NestedScrollView) findViewById(R.id.scrollView2);
 //        text_empty_cart = findViewById(R.id.text_empty_cart);
 
+        cart_payButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickPay();
+            }
+        });
+
 
         cart_backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,5 +98,9 @@ public class CartActivity extends Base {
                 onBackPressed();
             }
         });
+    }
+
+    private void onClickPay() {
+        startActivity(new Intent(this, OrderActivity.class));
     }
 }

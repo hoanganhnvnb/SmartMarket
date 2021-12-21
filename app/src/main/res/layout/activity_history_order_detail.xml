@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cart.OrderActivity"
-    android:background="#ebecf0">
+    tools:context=".Profile.HistoryOrderDetailActivity">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollViewOrder"
+        android:id="@+id/scrollView_detail_order"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp">
@@ -27,7 +26,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Trang thanh toán"
+                    android:text="Chi tiết đơn hàng"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -37,7 +36,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/cart_backButtonOrder"
+                    android:id="@+id/order_backButton_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
@@ -70,7 +69,7 @@
                         android:text="Khách hàng:"
                         android:layout_weight="1"/>
                     <TextView
-                        android:id="@+id/order_name_user"
+                        android:id="@+id/order_name_user_detail"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Name"
@@ -91,7 +90,7 @@
                         android:text="Mã hóa đơn:"
                         android:layout_weight="1"/>
                     <TextView
-                        android:id="@+id/order_id"
+                        android:id="@+id/order_id_detail"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="12"
@@ -111,10 +110,31 @@
                         android:text="Tình trạng:"
                         android:layout_weight="1"/>
                     <TextView
-                        android:id="@+id/order_is_complete"
+                        android:id="@+id/order_is_complete_detail"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Chưa thanh toán"
+                        android:text="Đã thanh toán"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_marginStart="16dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Ngày thanh toán:"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/order_date_detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Đã thanh toán"
                         android:layout_weight="1"/>
                 </LinearLayout>
 
@@ -135,7 +155,7 @@
                     android:layout_marginStart="18dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/order_cartItem_rvOrder"
+                    android:id="@+id/order_rv_detail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
@@ -158,29 +178,16 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"/>
 
-                <RadioGroup
-                    android:id="@+id/radio_group"
+                <TextView
+                    android:id="@+id/pay_method_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toEndOf="@id/textView2"
                     app:layout_constraintTop_toTopOf="@id/textView2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginStart="16dp">
-
-                    <RadioButton
-                        android:id="@+id/radio_cash"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tiền mặt"
-                        android:checked="true"/>
-
-                    <RadioButton
-                        android:id="@+id/radio_qrcode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Mã QR code"/>
-
-                </RadioGroup>
+                    app:layout_constraintBottom_toBottomOf="@id/textView2"
+                    android:text="Tiền mặt"
+                    android:textColor="@color/green_500"
+                    android:textSize="18sp"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
@@ -188,7 +195,7 @@
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="90dp"
         android:layout_gravity="bottom">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -196,33 +203,33 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/text_sum_payOrder"
+                android:id="@+id/text_order_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tổng thanh toán"
-                app:layout_constraintVertical_bias="0"
                 android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@color/white"
+                android:text="Tổng thanh toán"
                 android:textSize="14sp"
-                android:background="@color/white"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
             <TextView
                 android:id="@+id/text_pay_curOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="đ"
-                app:layout_constraintStart_toStartOf="@id/text_sum_payOrder"
-                app:layout_constraintTop_toBottomOf="@id/text_sum_payOrder"
+                app:layout_constraintStart_toStartOf="@id/text_order_detail"
+                app:layout_constraintTop_toBottomOf="@id/text_order_detail"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="8dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/green_500"
-                android:layout_marginLeft="5dp"/>
+                android:textColor="@color/green_500" />
 
             <TextView
-                android:id="@+id/cart_totalOrder"
+                android:id="@+id/sum_order_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@id/text_pay_curOrder"
@@ -233,19 +240,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/green_500"
                 android:text="10.000"/>
-
-            <Button
-                android:id="@+id/cart_payButtonOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@color/green_500"
-                android:textAllCaps="false"
-                android:text="Thanh toán"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.bottomappbar.BottomAppBar>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
