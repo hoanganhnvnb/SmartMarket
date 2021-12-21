@@ -1,10 +1,5 @@
 package com.example.api;
 
-import static android.content.Context.MODE_PRIVATE;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-
 import com.example.main.MarketApp;
 import com.example.models.Cart;
 import com.example.models.CartItems;
@@ -25,8 +20,6 @@ import okhttp3.Interceptor;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -36,7 +29,6 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -186,5 +178,8 @@ public interface ApiService {
 
     @GET("order/api/orders/update_total/{id}")
     Call<MessageApi> updateTotalOrder(@Path("id") int id);
+
+    @GET("order/api/orders/order/{id}")
+    Call<Order> getOrderById(@Path("id") int id);
 
 }
