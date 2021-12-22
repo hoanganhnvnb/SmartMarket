@@ -185,4 +185,14 @@ public interface ApiService {
     @GET("order/api/orders/order/{id}")
     Call<Order> getOrderById(@Path("id") int id);
 
+    //SEARCH API-------------------------------------------------------------------------
+    @GET("search/api/company/{search_text}")
+    Call<ArrayList<Items>> searchItemByCompany(@Path("search_text") String search_text);
+
+    @GET("search/api/category/{search_text}")
+    Call<ArrayList<Items>> searchItemByCategoryTitle(@Path("search_text") String search_text);
+
+    @GET("search/api/item/{search_text}")
+    Call<ArrayList<Items>> searchItemByItemTitle(@Path("search_text") String search_text);
+
 }
