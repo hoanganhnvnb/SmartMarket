@@ -157,6 +157,9 @@ public interface ApiService {
     @PUT("notification/api/notifications/{id}")
     Call<MessageApi> markIsReadNotify(@Path("id") int id);
 
+    @DELETE("notification/api/notifications/{id}")
+    Call<MessageApi> deleteNotification(@Path("id") int id);
+
 
     // ORDER API----------------------------------------------------------------------
     @GET("order/api/orders/his_order")

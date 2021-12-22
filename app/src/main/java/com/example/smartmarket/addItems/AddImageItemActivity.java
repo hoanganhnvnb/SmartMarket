@@ -97,8 +97,8 @@ public class AddImageItemActivity extends Base {
     private void initView() {
         img_up = findViewById(R.id.img_up);
         select_img = findViewById(R.id.select_img);
-        reject_up = findViewById(R.id.reject_up);
-        confirm_up = findViewById(R.id.confirm_up);
+        reject_up = findViewById(R.id.reject_up_img);
+        confirm_up = findViewById(R.id.confirm_up_img);
 
         select_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +115,16 @@ public class AddImageItemActivity extends Base {
                 } else {
                     uploadImageApi();
                 }
+            }
+        });
+
+        reject_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddImageItemActivity.this, DashboardActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
             }
         });
     }

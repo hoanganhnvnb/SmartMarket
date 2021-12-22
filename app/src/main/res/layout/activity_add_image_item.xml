@@ -40,7 +40,7 @@
         android:layout_marginTop="50dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/reject_up"
+            android:id="@+id/reject_up_img"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,7 +53,7 @@
             android:layout_marginStart="10dp"
             android:backgroundTint="#a9a9a9"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/confirm_up"
+            android:id="@+id/confirm_up_img"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

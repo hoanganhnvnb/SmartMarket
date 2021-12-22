@@ -110,8 +110,8 @@
                     android:layout_height="match_parent"
                     android:minHeight="48dp"
                     android:layout_weight="1"
-                    android:inputType="text"
-                    android:text="Food" />
+                    android:inputType="none"
+                    android:text="Select category" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>

@@ -36,6 +36,7 @@
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/drawable/search_bg.xml" value="0.21851851851851853" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/drawable/vie_bg.xml" value="0.2703125" />
+        <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_add_image_item.xml" value="0.13768115942028986" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_add_items.xml" value="0.176" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_cart.xml" value="0.2" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_dasboard_admin.xml" value="0.2" />
@@ -46,6 +47,7 @@
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_login_test.xml" value="0.196875" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_signup.xml" value="0.2" />
+        <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/dropdown_item.xml" value="0.13768115942028986" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/fragment_on_boarding.xml" value="0.18072916666666666" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/login_tab_fragment.xml" value="0.2" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/row_cart.xml" value="0.115625" />

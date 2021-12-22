@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -69,6 +70,7 @@ public class AddActivity extends Base {
 
     ArrayList<Category> arrayList_category;
     ArrayAdapter<Category> arrayAdapter_category;
+    private int categoryId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,15 +151,30 @@ public class AddActivity extends Base {
         arrayList_category = app.categories;
         arrayAdapter_category=new ArrayAdapter<>(getApplicationContext(), R.layout.dropdown_item, arrayList_category);
         categoryItem.setAdapter(arrayAdapter_category);
-        categoryItem.setThreshold(1);
+        categoryItem.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                categoryId = arrayAdapter_category.getItem(i).id;
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        categoryItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                categoryId = arrayAdapter_category.getItem(i).id;
+            }
+        });
     }
 
     private void callAddItemApi() {
         long barcode = Long.parseLong(addBarcode.getText().toString());
         String title = addName.getText().toString();
         String description = addDescription.getText().toString();
-        int category = Integer.parseInt(categoryItem.getText().toString());
+        int category = categoryId;
         int importPrice = Integer.parseInt(add_Import_Price.getText().toString());
         int sellPrice = Integer.parseInt(add_Sell_Price.getText().toString());
         int quantity = Integer.parseInt(addQuantity.getText().toString());
