@@ -1,10 +1,12 @@
 package com.example.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.text.TextUtils;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,8 +18,7 @@ import com.example.api.ApiService;
 import com.example.models.MessageApi;
 import com.example.models.Notify;
 import com.example.smartmarket.R;
-
-
+import com.example.smartmarket.notification.NotificationActivity;
 
 import java.util.ArrayList;
 
@@ -46,8 +47,6 @@ public class ListNotifiesAdapter extends RecyclerView.Adapter<ListNotifiesAdapte
     public void onBindViewHolder(@NonNull ListNotifiesAdapter.NotifyViewHolder holder, int position) {
         Notify notify = listNotifies.get(position);
         holder.notify_title.setText(notify.title);
-        holder.notify_content.setMaxLines(2);
-        holder.notify_content.setEllipsize(TextUtils.TruncateAt.END);
         holder.notify_content.setText(notify.content);
         holder.notify_create_at.setText(notify.create_at);
         if(notify.is_read == true) {
@@ -59,7 +58,40 @@ public class ListNotifiesAdapter extends RecyclerView.Adapter<ListNotifiesAdapte
         holder.notify_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                holder.notify_is_read.setImageResource(R.drawable.ic_is_read_notify);
                 onClickNotify(notify.id);
+            }
+        });
+
+        holder.delete_notify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder((NotificationActivity) context);
+                builder.setMessage("Xác nhận xóa thông báo?");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        listNotifies.remove(holder.getAdapterPosition());
+                        notifyItemRemoved(holder.getAdapterPosition());
+                        notifyItemRangeChanged(holder.getAdapterPosition(), listNotifies.size());
+                        ApiService.apiService.deleteNotification(notify.id).enqueue(new Callback<MessageApi>() {
+                            @Override
+                            public void onResponse(Call<MessageApi> call, Response<MessageApi> response) {
+                            }
+
+                            @Override
+                            public void onFailure(Call<MessageApi> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                builder.show();
             }
         });
     }
@@ -77,7 +109,6 @@ public class ListNotifiesAdapter extends RecyclerView.Adapter<ListNotifiesAdapte
         });
     }
 
-
     @Override
     public int getItemCount() {
         if (listNotifies == null) {
@@ -92,6 +123,7 @@ public class ListNotifiesAdapter extends RecyclerView.Adapter<ListNotifiesAdapte
         TextView notify_create_at;
         ImageView notify_is_read;
         LinearLayout notify_layout;
+        ImageButton delete_notify;
 
         public NotifyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,6 +133,7 @@ public class ListNotifiesAdapter extends RecyclerView.Adapter<ListNotifiesAdapte
             notify_create_at = itemView.findViewById(R.id.rv_notify_time);
             notify_is_read = itemView.findViewById(R.id.rv_icon_read_notify);
             notify_layout = itemView.findViewById(R.id.notify_layout);
+            delete_notify = itemView.findViewById(R.id.notify_delete);
         }
     }
 }
