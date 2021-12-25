@@ -1,5 +1,7 @@
 package com.example.models;
 
+import androidx.annotation.NonNull;
+
 public class Category {
     public int id;
     public String title;
@@ -28,4 +30,9 @@ public class Category {
         this.image = image;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return this.title;
+    }
 }

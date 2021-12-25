@@ -12,11 +12,27 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMarket">
         <activity
             android:name=".Search.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".scan.ScanQRPayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Profile.HistoryOrderDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".addItems.AddImageItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Profile.ListOrder"
+            android:exported="true" />
+        <activity
+            android:name=".cart.OrderActivity"
             android:exported="false" />
         <activity
             android:name=".items.UpdateDeleteCartItemActivity"
@@ -33,6 +49,9 @@
         <activity
             android:name=".cart.CartActivity"
             android:exported="false" />
+        <activity
+            android:name=".notification.NotificationActivity"
+            android:exported="true" />
         <activity
             android:name=".Profile.UserList"
             android:exported="true" />
@@ -76,6 +95,14 @@
         <activity
             android:name=".addItems.AddActivity"
             android:exported="true" />
+
+        <service
+            android:name="com.example.fcm.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

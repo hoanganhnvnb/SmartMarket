@@ -66,12 +66,13 @@
             android:paddingTop="20dp"
            >
             <Button
+                android:id="@+id/btn_hoadon"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:padding="15dp"
                 android:gravity="center_vertical"
                 android:drawableEnd="@drawable/ic_t"
-                android:text="Hóa đơn thanh toán"
+                android:text="Lịch sử mua hàng"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"

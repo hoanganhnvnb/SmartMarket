@@ -8,6 +8,7 @@
     android:elevation="3dp">
 
     <TextView
+        android:id="@+id/text_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Xóa hàng hóa?"
@@ -17,6 +18,12 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/img_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 
     <LinearLayout

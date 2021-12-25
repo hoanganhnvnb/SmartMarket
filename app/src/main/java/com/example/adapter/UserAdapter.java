@@ -3,13 +3,11 @@ package com.example.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.models.Items;
 import com.example.models.User;
 import com.example.smartmarket.R;
 
@@ -37,6 +35,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         holder.UserName.setText(user.username);
         holder.Mail.setText(user.email);
         holder.FullName.setText(user.first_name + user.last_name);
+        holder.Phone.setText(user.phone_number);
     }
 
     @Override
@@ -51,6 +50,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         TextView UserName;
         TextView Mail;
         TextView FullName;
+        TextView Phone;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,6 +58,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             UserName = itemView.findViewById(R.id.holder_username);
             Mail = itemView.findViewById(R.id.holder_email);
             FullName = itemView.findViewById(R.id.holder_Fullname);
+            Phone = itemView.findViewById(R.id.holder_Phone);
         }
     }
 }

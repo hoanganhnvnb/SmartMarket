@@ -1,18 +1,16 @@
 package com.example.smartmarket.items;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adapter.ListItemsAdapter;
 import com.example.api.ApiService;
 import com.example.models.Items;
 import com.example.smartmarket.Base;
-import com.example.smartmarket.Profile.Profile;
 import com.example.smartmarket.R;
 
 import java.util.ArrayList;
@@ -36,19 +34,15 @@ public class ListItemsActivity extends Base {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent( ListItemsActivity.this, Profile.class);
-                startActivity(i);
+                onBackPressed();
             }
         });
         CreateRVItems();
     }
 
-    private void CreateRVItems() {
-        LinearLayoutManager linearLayoutManagerPop =
-                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-
-        recyclerViewItem = (RecyclerView) findViewById(R.id.list_view_items);
-        recyclerViewItem.setLayoutManager(linearLayoutManagerPop);
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         ApiService.apiService.getAllItemsApi().enqueue(new Callback<ArrayList<Items>>() {
             @Override
@@ -65,5 +59,13 @@ public class ListItemsActivity extends Base {
 
             }
         });
+    }
+
+    private void CreateRVItems() {
+        LinearLayoutManager linearLayoutManagerPop =
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
+        recyclerViewItem = (RecyclerView) findViewById(R.id.list_view_items);
+        recyclerViewItem.setLayoutManager(linearLayoutManagerPop);
     }
 }

@@ -29,7 +29,9 @@ import com.example.smartmarket.Search.SearchActivity;
 import com.example.smartmarket.addItems.AddActivity;
 import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.login.LoginActivity;
+import com.example.smartmarket.notification.NotificationActivity;
 import com.example.smartmarket.scan.ScanActivity;
+import com.example.smartmarket.scan.ScanQRPayActivity;
 import com.example.smartmarket.scan.ScanToCartActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -88,11 +90,6 @@ public class DashboardActivity extends Base {
     }
 
     private void createCart() {
-        if (app.mCart != null) {
-            if (app.mCart.active) {
-                return;
-            }
-        }
         ApiService.apiService.getActiveCart().enqueue(new Callback<Cart>() {
             @Override
             public void onResponse(Call<Cart> call, Response<Cart> response) {
@@ -199,14 +196,17 @@ public class DashboardActivity extends Base {
                         System.out.println("Home");
                         break;
                     case R.id.menu_notification:
-                        SharedPreferences tokenShared = getSharedPreferences(MarketApp.SHARED_PREFERENCE_TOKEN, MODE_PRIVATE);
-                        SharedPreferences.Editor editorToken = tokenShared.edit();
-                        String tken = tokenShared.getString("token", null);
-                        System.out.println(tken);
+                        System.out.println("Notification");
+                        startActivity(new Intent(DashboardActivity.this, NotificationActivity.class));
                         break;
                     case R.id.menu_cart:
                         System.out.println("Cart");
-                        startActivity(new Intent(DashboardActivity.this, CartActivity.class));
+                        if (app.mUser.is_superuser) {
+                            startActivity(new Intent(DashboardActivity.this, ScanQRPayActivity.class));
+                        } else {
+                            startActivity(new Intent(DashboardActivity.this, CartActivity.class));
+                        }
+
                         break;
                     case R.id.menu_user:
                         System.out.println("User");

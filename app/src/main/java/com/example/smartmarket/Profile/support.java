@@ -22,8 +22,7 @@ public class support extends Base {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent( support.this, Profile.class);
-                startActivity(i);
+                onBackPressed();
             }
         });
     }
