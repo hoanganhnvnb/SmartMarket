@@ -43,10 +43,14 @@
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_dashboard.xml" value="0.4" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_introduction.xml" value="0.2" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_list_items.xml" value="0.14427083333333332" />
+        <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_list_notifies.xml" value="0.15" />
+        <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_list_order.xml" value="0.15" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_login_test.xml" value="0.196875" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_profile.xml" value="0.152" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_signup.xml" value="0.2" />
+        <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_user_list.xml" value="0.15" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/dropdown_item.xml" value="0.13768115942028986" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/fragment_on_boarding.xml" value="0.18072916666666666" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/login_tab_fragment.xml" value="0.2" />

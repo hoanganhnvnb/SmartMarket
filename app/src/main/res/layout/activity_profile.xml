@@ -5,134 +5,167 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Profile.Profile"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:elevation="3dp"
+    android:background="@color/white">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/green_300"
-        android:padding="20dp"
-        tools:ignore="MissingConstraints">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/green_300"
+            android:layout_gravity="top">
 
-        <TextView
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="65dp"
-            android:layout_marginBottom="40dp"
-            android:gravity="center"
-            android:text="Hồ sơ người dùng"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="Menu người dùng"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
 
-        <Button
-            android:id="@+id/btn_return"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="@android:color/transparent"
-            android:drawableRight="@drawable/ic_back"
-            tools:ignore="SpeakableTextPresentCheck" />
+            <Button
+                android:id="@+id/btn_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:background="@color/transparent"
+                android:drawableLeft="@drawable/ic_back_white"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
 
-        <Button
-            android:id="@+id/btn_toProfile"
-            android:layout_width="68dp"
-            android:layout_height="67dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="61dp"
-            android:background="@android:color/transparent"
-            android:drawableEnd="@drawable/ic_t"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/username_profile_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UserName"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="26sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1"
+                android:layout_marginBottom="42dp"
+                android:layout_marginStart="32dp"/>
+            <TextView
+                android:id="@+id/email_profile_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="email@gmail.com"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@id/username_profile_menu"
+                app:layout_constraintTop_toBottomOf="@id/username_profile_menu"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0"
+                android:layout_marginTop="3dp"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/btn_toProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@drawable/ic_t"
+                app:layout_constraintBottom_toBottomOf="@+id/email_profile_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/username_profile_menu"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:layout_marginEnd="16dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="20dp"
-           >
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginVertical="8dp">
             <Button
                 android:id="@+id/btn_hoadon"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:padding="15dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:drawableEnd="@drawable/ic_t"
                 android:text="Lịch sử mua hàng"
-                android:textColor="@color/black"
+                android:textColor="@color/green_300"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:elevation="3dp"
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/btn_list_items"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:padding="15dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:drawableEnd="@drawable/ic_t"
                 android:text="Danh sách hàng hóa"
-                android:textColor="@color/black"
+                android:textColor="@color/green_300"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:elevation="3dp"
+                android:textAllCaps="false"/>
             <Button
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:id="@+id/btn_user_list"
-                android:layout_height="60dp"
-                android:padding="15dp"
+                android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_t"
                 android:text="Danh sách người dùng"
-                android:textColor="@color/black"
+                android:textColor="@color/green_300"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:background="@android:color/transparent"
-                android:layout_marginBottom="10dp"/>
+                android:elevation="3dp"
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
-                android:layout_height="60dp"
-                android:padding="15dp"
+                android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_t"
                 android:text="Đăng xuất"
-                android:textColor="@color/black"
+                android:textColor="@color/green_300"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:background="@android:color/transparent"
-                android:layout_marginBottom="10dp"/>
+                android:elevation="3dp"
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/btn_support"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
-                android:layout_height="60dp"
-                android:padding="15dp"
+                android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_t"
                 android:text="Hỗ trợ"
-                android:textColor="@color/black"
+                android:textColor="@color/green_300"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:background="@android:color/transparent"
-                android:layout_marginBottom="10dp"/>
+                android:elevation="3dp"
+                android:textAllCaps="false"/>
 
         </LinearLayout>
     </LinearLayout>
