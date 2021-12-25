@@ -27,10 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_textView"
-        android:layout_below="@+id/scanner_view"
+        android:layout_below="@+id/scanner_view_pay"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
-        android:text="Scan something..."
-        android:textColor="@color/black"/>
+        android:text="Quét QR thanh toán"
+        android:textColor="@color/green_500"
+        android:textStyle="italic"
+        android:textSize="24sp"/>
 
 </RelativeLayout>

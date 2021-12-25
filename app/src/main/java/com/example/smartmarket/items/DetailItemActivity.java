@@ -54,7 +54,6 @@ public class DetailItemActivity extends Base {
 
     private void initElement() {
         detail_item_backbtn = (FloatingActionButton) findViewById(R.id.detail_item_backbtn);
-        detail_item_cartbtn = (FloatingActionButton) findViewById(R.id.detail_item_cartbtn);
         detail_item_image = (ImageView) findViewById(R.id.detail_item_image);
         detail_item_title = (TextView) findViewById(R.id.detail_item_title);
         detail_item_des = (TextView) findViewById(R.id.detail_item_des);

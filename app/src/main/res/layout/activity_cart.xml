@@ -7,14 +7,17 @@
     tools:context=".cart.CartActivity">
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/text_empty_cart"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Giỏ hàng rỗng"-->
-<!--        android:textColor="#000000"-->
-<!--        app:layout_anchor="@+id/scrollView2"-->
-<!--        app:layout_anchorGravity="center" />-->
+    <TextView
+        android:id="@+id/text_empty_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giỏ hàng rỗng!"
+        android:textColor="@color/green_500"
+        android:textStyle="bold"
+        app:layout_anchor="@+id/scrollView2"
+        app:layout_anchorGravity="center"
+        android:layout_gravity="center"
+        android:textSize="24sp" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView2"

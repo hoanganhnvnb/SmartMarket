@@ -82,7 +82,7 @@ public class CartActivity extends Base {
         cart_payButton = (Button) findViewById(R.id.cart_payButton);
         cart_backButton = (Button) findViewById(R.id.cart_backButton);
         scrollView2 = (NestedScrollView) findViewById(R.id.scrollView2);
-//        text_empty_cart = findViewById(R.id.text_empty_cart);
+        text_empty_cart = findViewById(R.id.text_empty_cart);
 
         cart_payButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +98,14 @@ public class CartActivity extends Base {
                 onBackPressed();
             }
         });
+
+        if (app.cartItems.isEmpty() || app.cartItems == null) {
+            text_empty_cart.setVisibility(View.VISIBLE);
+            cartItemsList.setVisibility(View.GONE);
+        } else {
+            text_empty_cart.setVisibility(View.GONE);
+            cartItemsList.setVisibility(View.VISIBLE);
+        }
     }
 
     private void onClickPay() {

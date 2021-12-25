@@ -54,7 +54,7 @@ public class DashboardActivity extends Base {
     public static ArrayList<Cart> cartArrayList;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton scanButton;
-    TextView dash_username;
+    TextView dash_username, dash_slogan;
     private long backTime;
     private Toast backToast;
 
@@ -66,6 +66,7 @@ public class DashboardActivity extends Base {
         setContentView(R.layout.activity_dashboard);
 
         dash_username = (TextView) findViewById(R.id.dash_username);
+        dash_slogan = (TextView) findViewById(R.id.dash_slogan);
 
         editSearch = (SearchView) findViewById(R.id.searchView);
         editSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -175,6 +176,15 @@ public class DashboardActivity extends Base {
                 if (user != null) {
                     app.mUser = user;
                     dash_username.setText("Chào " + user.username +"!");
+                    if (app.mUser.is_superuser && app.mUser != null) {
+                        bottomNavigationView.getMenu().clear();
+                        bottomNavigationView.inflateMenu(R.menu.bottom_menu_admin);
+                        dash_slogan.setText("Quản lý cửa hàng của bạn");
+                    } else {
+                        bottomNavigationView.getMenu().clear();
+                        bottomNavigationView.inflateMenu(R.menu.bottom_menu);
+                        dash_slogan.setText("Mua hàng thông minh");
+                    }
                 }
             }
 
@@ -201,15 +211,25 @@ public class DashboardActivity extends Base {
                         break;
                     case R.id.menu_cart:
                         System.out.println("Cart");
-                        if (app.mUser.is_superuser) {
-                            startActivity(new Intent(DashboardActivity.this, ScanQRPayActivity.class));
-                        } else {
-                            startActivity(new Intent(DashboardActivity.this, CartActivity.class));
-                        }
-
+                        startActivity(new Intent(DashboardActivity.this, CartActivity.class));
                         break;
                     case R.id.menu_user:
                         System.out.println("User");
+                        startActivity(new Intent(DashboardActivity.this, Profile.class));
+                        break;
+                    case R.id.menu_home_admin:
+                        System.out.println("Home admin");
+                        break;
+                    case R.id.menu_notification_admin:
+                        System.out.println("Noti admin");
+                        startActivity(new Intent(DashboardActivity.this, NotificationActivity.class));
+                        break;
+                    case R.id.menu_import:
+                        System.out.println("Import");
+                        startActivity(new Intent(DashboardActivity.this, ScanActivity.class));
+                        break;
+                    case R.id.menu_user_admin:
+                        System.out.println("User admin");
                         startActivity(new Intent(DashboardActivity.this, Profile.class));
                         break;
                 }
@@ -222,7 +242,7 @@ public class DashboardActivity extends Base {
             @Override
             public void onClick(View v) {
                 if (app.mUser.is_superuser) {
-                    startActivity(new Intent(DashboardActivity.this, ScanActivity.class));
+                    startActivity(new Intent(DashboardActivity.this, ScanQRPayActivity.class));
                 } else {
                     startActivity(new Intent(DashboardActivity.this, ScanToCartActivity.class));
                 }

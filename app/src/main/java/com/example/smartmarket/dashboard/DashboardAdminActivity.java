@@ -37,9 +37,6 @@ public class DashboardAdminActivity extends AppCompatActivity {
                     case R.id.menu_notification_admin:
                         System.out.println("Notification");
                         break;
-                    case R.id.menu_list_item:
-                        System.out.println("Cart");
-                        break;
                     case R.id.menu_user_admin:
                         System.out.println("User");
                         break;

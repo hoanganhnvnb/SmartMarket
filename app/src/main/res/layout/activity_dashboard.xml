@@ -92,9 +92,9 @@
                         android:id="@+id/dash_banner_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Buy Something"
+                        android:text="Mua hàng chỉ cần quét"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -104,19 +104,6 @@
                         app:layout_constraintVertical_bias="1"
                         android:layout_marginRight="28dp"
                         android:layout_marginBottom="64dp"/>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toEndOf="@id/dash_banner_image"
-                        app:layout_constraintTop_toBottomOf="@id/dash_banner_text"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:text="Buy Now"
-                        android:background="@drawable/button_bg"
-                        android:textSize="10sp"
-                        android:layout_marginRight="38dp"
-                        app:layout_constraintHorizontal_bias="1"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

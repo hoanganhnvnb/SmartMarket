@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.main.MarketApp;
@@ -18,11 +19,17 @@ import com.example.smartmarket.login.LoginActivity;
 public class Profile extends Base {
 
     Button button1,button2,button3, logout_btn,button5,button6, button7;
+    TextView username_profile_menu, email_profile_menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        email_profile_menu = findViewById(R.id.email_profile_menu);
+        username_profile_menu = findViewById(R.id.username_profile_menu);
+        username_profile_menu.setText(app.mUser.username);
+        email_profile_menu.setText(app.mUser.email);
 
         button1 = (Button)findViewById(R.id.btn_return);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +107,13 @@ public class Profile extends Base {
                 startActivity(i);
             }
         });
+
+        if (app.mUser.is_superuser) {
+            button7.setVisibility(View.GONE);
+        } else {
+            button3.setVisibility(View.GONE);
+            button6.setVisibility(View.GONE);
+        }
 
     }
 

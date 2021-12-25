@@ -9,8 +9,8 @@
         android:icon="@drawable/ic_home"/>
     <item
         android:id="@+id/menu_notification"
-        android:title="@string/action_notify"
-        app:showAsAction="always"
+        android:title="Thông báo"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/ic_notification"/>
 
     <item
@@ -22,12 +22,12 @@
     <item
         android:id="@+id/menu_cart"
         android:icon="@drawable/ic_cart_green"
-        android:title="@string/action_cart"
-        app:showAsAction="always" />
+        android:title="Giỏ hàng"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_user"
-        android:title="User"
+        android:title="Thông tin"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_user"/>
 
