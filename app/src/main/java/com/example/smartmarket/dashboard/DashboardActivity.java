@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,8 @@ import com.example.models.User;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.Profile.Profile;
 import com.example.smartmarket.R;
+import com.example.smartmarket.Search.SearchActivity;
+import com.example.smartmarket.addItems.AddActivity;
 import com.example.smartmarket.cart.CartActivity;
 import com.example.smartmarket.login.LoginActivity;
 import com.example.smartmarket.notification.NotificationActivity;
@@ -54,12 +58,30 @@ public class DashboardActivity extends Base {
     private long backTime;
     private Toast backToast;
 
+    public SearchView editSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
         dash_username = (TextView) findViewById(R.id.dash_username);
+
+        editSearch = (SearchView) findViewById(R.id.searchView);
+        editSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent intent = new Intent(DashboardActivity.this, SearchActivity.class);
+                intent.putExtra("search_text", query);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         createRVDash();
 

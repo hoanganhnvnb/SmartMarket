@@ -1,5 +1,7 @@
 package com.example.smartmarket.notification;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adapter.ListNotifiesAdapter;
 import com.example.api.ApiService;
+import com.example.models.MessageApi;
 import com.example.models.Notify;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;

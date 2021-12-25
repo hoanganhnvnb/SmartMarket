@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -128,6 +129,8 @@ public class OrderActivity extends Base {
     private void onClickPay() {
         if (radio_cash.isChecked()) {
             Toast.makeText(this, "Tiền mặt", Toast.LENGTH_SHORT).show();
+            Intent i= new Intent(Intent.ACTION_VIEW, Uri.parse("https://me.momo.vn/pwIlukFlioUdujfgfMC5"));
+            startActivity(i);
         } else {
             Toast.makeText(this, "Quét máng", Toast.LENGTH_SHORT).show();
             openDialogQRcode();

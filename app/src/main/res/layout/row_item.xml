@@ -43,7 +43,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:text="Name item"
-                        android:textColor="@color/black"
+                        android:textColor="@color/green_500"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
