@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMarket">
         <activity
+            android:name=".Search.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".scan.ScanQRPayActivity"
             android:exported="false" />
         <activity
