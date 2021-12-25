@@ -96,13 +96,19 @@
         <entry key="..\:/SmartMarket/app/src/main/res/layout/viewholder_order.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable-v24/rounded_corner.xml" value="0.2703125" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/backgroud_under.xml" value="0.2703125" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/background_list.xml" value="0.2703125" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/background_toolbar.xml" value="0.2703125" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/background_whole.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_arrow_back_black_24dp.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_baseline.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_baseline_brightness_1_24.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_baseline_fiber_manual_record_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_clear_notify.xml" value="0.14947916666666666" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_delete_black_24dp.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_home.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_is_not_read_notify.xml" value="0.2703125" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_is_read_notify.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_list.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_male.xml" value="0.2703125" />
@@ -111,17 +117,20 @@
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_shopping_basket.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/ic_shopping_cart_black.xml" value="0.2703125" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/drawable/rounded_corner.xml" value="0.2703125" />
-        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_cart.xml" value="0.1" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_cart.xml" value="0.264" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_dashboard.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_detail_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_history_order_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_introduction.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_list_items.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_list_notifies.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_list_items.xml" value="0.264" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_list_notifies.xml" value="0.2" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_list_order.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_scan.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_signup.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_update_delete_cart_item.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_user_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/activity_user_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/cart_icon.xml" value="0.25416666666666665" />
@@ -130,7 +139,8 @@
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/line_cart.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/list_cart.xml" value="0.1" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/row_item.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/row_notify.xml" value="0.264" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/row_notify.xml" value="0.4" />
+        <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/viewholder_order.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/layout/viewholder_popular.xml" value="0.152" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/menu/activity_main_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nguyenhuuvu/AndroidStudioProjects/SmartMarket/app/src/main/res/menu/bottom_menu.xml" value="0.25416666666666665" />

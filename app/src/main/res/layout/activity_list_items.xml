@@ -4,36 +4,35 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_whole"
     tools:context=".items.ListItemsActivity">
     <RelativeLayout
         android:id="@+id/header_list_notifies"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="@color/green_300"
-        android:padding="20dp"
+        android:background="@drawable/background_toolbar"
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_toEndOf="@+id/btn_return_userList"
-            android:text="Danh Sách Hàng Hóa"
-            android:textColor="@color/black"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
             android:gravity="center"
-            android:textSize="22sp"
+            android:text="Danh sách hàng hóa"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_return_userList"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:layout_marginVertical="0dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@android:color/transparent"
-            android:drawableRight="@drawable/ic_back"
+            android:drawableRight="@drawable/ic_back_white"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </RelativeLayout>
@@ -48,8 +47,9 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="115dp"
+            android:layout_marginTop="60dp"
             android:layout_marginBottom="0dp"
+            android:background="@drawable/background_list"
             android:paddingLeft="10dp" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
