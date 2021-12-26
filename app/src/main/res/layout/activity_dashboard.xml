@@ -92,7 +92,7 @@
                         android:id="@+id/dash_banner_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mua hàng chỉ cần quét"
+                        android:text="Chỉ cần quét"
                         android:textColor="@color/white"
                         android:textSize="12sp"
                         android:textStyle="bold"
@@ -103,7 +103,7 @@
                         app:layout_constraintHorizontal_bias="1"
                         app:layout_constraintVertical_bias="1"
                         android:layout_marginRight="28dp"
-                        android:layout_marginBottom="64dp"/>
+                        android:layout_marginBottom="32dp"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
