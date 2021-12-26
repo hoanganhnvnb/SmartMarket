@@ -1,20 +1,20 @@
 package com.example.smartmarket.dashboard;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
+import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.example.smartmarket.scan.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class DashboardAdminActivity extends AppCompatActivity {
+public class DashboardAdminActivity extends Base {
 
     BottomNavigationView bottomNavigationView;
     FloatingActionButton scanButton;

@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +12,7 @@ import com.example.adapter.ListItemCatAdapter;
 import com.example.api.ApiService;
 import com.example.models.Category;
 import com.example.models.Items;
+import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ItemsByCategoryActivity extends AppCompatActivity {
+public class ItemsByCategoryActivity extends Base {
 
     RecyclerView.Adapter adapter;
     RecyclerView list_cat_rv;
