@@ -18,7 +18,7 @@ import com.example.smartmarket.login.LoginActivity;
 
 public class Profile extends Base {
 
-    Button button1,button2,button3, logout_btn,button5,button6, button7;
+    Button button1,button2,button3, logout_btn,button5,button6, button7,btn_report;
     TextView username_profile_menu, email_profile_menu;
 
     @Override
@@ -108,11 +108,21 @@ public class Profile extends Base {
             }
         });
 
+        btn_report = (Button)findViewById(R.id.btn_report);
+        btn_report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( Profile.this, Report.class);
+                startActivity(i);
+            }
+        });
+
         if (app.mUser.is_superuser) {
             button7.setVisibility(View.GONE);
         } else {
             button3.setVisibility(View.GONE);
             button6.setVisibility(View.GONE);
+            btn_report.setVisibility(View.GONE);
         }
 
     }

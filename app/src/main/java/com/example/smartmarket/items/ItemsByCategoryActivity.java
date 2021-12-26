@@ -1,17 +1,18 @@
 package com.example.smartmarket.items;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adapter.ListItemCatAdapter;
 import com.example.api.ApiService;
 import com.example.models.Category;
 import com.example.models.Items;
+import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 
 import java.util.ArrayList;
@@ -20,19 +21,27 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ItemsByCategoryActivity extends AppCompatActivity {
+public class ItemsByCategoryActivity extends Base {
 
     RecyclerView.Adapter adapter;
     RecyclerView list_cat_rv;
     ArrayList<Items> items;
 
     TextView text_empty_list;
-
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_by_category);
+
+        button = (Button)findViewById(R.id.list_catBack);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         list_cat_rv = findViewById(R.id.list_cat_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
