@@ -48,7 +48,7 @@ public class ListNotifiesAdapter extends RecyclerView.Adapter<ListNotifiesAdapte
         Notify notify = listNotifies.get(position);
         holder.notify_title.setText(notify.title);
         holder.notify_content.setText(notify.content);
-        holder.notify_create_at.setText(notify.create_at);
+        holder.notify_create_at.setText(convertDateTime(notify.create_at));
         if(notify.is_read == true) {
             holder.notify_is_read.setImageResource(R.drawable.ic_is_read_notify);
         } else {
@@ -135,6 +135,11 @@ public class ListNotifiesAdapter extends RecyclerView.Adapter<ListNotifiesAdapte
             notify_layout = itemView.findViewById(R.id.notify_layout);
             delete_notify = itemView.findViewById(R.id.notify_delete);
         }
+    }
+
+    private String convertDateTime(String date){
+        String[] parts = date.split("T",2);
+        return parts[0];
     }
 }
 
