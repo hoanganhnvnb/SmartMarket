@@ -1,12 +1,13 @@
 package com.example.smartmarket.items;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
 import com.example.adapter.ListItemCatAdapter;
 import com.example.api.ApiService;
@@ -27,12 +28,20 @@ public class ItemsByCategoryActivity extends AppCompatActivity {
     ArrayList<Items> items;
 
     TextView text_empty_list;
-
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_by_category);
+
+        button = (Button)findViewById(R.id.list_catBack);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         list_cat_rv = findViewById(R.id.list_cat_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
