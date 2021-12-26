@@ -186,13 +186,16 @@ public interface ApiService {
     Call<Order> getOrderById(@Path("id") int id);
 
     //SEARCH API-------------------------------------------------------------------------
-    @GET("search/api/company/{search_text}")
-    Call<ArrayList<Items>> searchItemByCompany(@Path("search_text") String search_text);
+    @FormUrlEncoded
+    @POST("search/api/company")
+    Call<ArrayList<Items>> searchItemByCompany(@Field("search_text") String search_text);
 
-    @GET("search/api/category/{search_text}")
-    Call<ArrayList<Items>> searchItemByCategoryTitle(@Path("search_text") String search_text);
+    @FormUrlEncoded
+    @POST("search/api/category")
+    Call<ArrayList<Items>> searchItemByCategoryTitle(@Field("search_text") String search_text);
 
-    @GET("search/api/item/{search_text}")
-    Call<ArrayList<Items>> searchItemByItemTitle(@Path("search_text") String search_text);
+    @FormUrlEncoded
+    @POST("search/api/item")
+    Call<ArrayList<Items>> searchItemByItemTitle(@Field("search_text") String search_text);
 
 }

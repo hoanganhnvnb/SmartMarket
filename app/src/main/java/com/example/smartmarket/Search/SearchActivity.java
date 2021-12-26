@@ -10,6 +10,7 @@ import android.util.Base64;
 import android.widget.SearchView;
 
 import com.example.adapter.PopularAdapter;
+import com.example.adapter.SearchItemAdapter;
 import com.example.api.ApiService;
 import com.example.models.Items;
 import com.example.smartmarket.Base;
@@ -72,15 +73,12 @@ public class SearchActivity extends Base {
     protected void onResume() {
         super.onResume();
 
-        byte[] data = search_text.getBytes(StandardCharsets.UTF_8);
-        String base64 = Base64.encodeToString(data, Base64.DEFAULT);
-
-        ApiService.apiService.searchItemByItemTitle(base64).enqueue(new Callback<ArrayList<Items>>() {
+        ApiService.apiService.searchItemByItemTitle(search_text).enqueue(new Callback<ArrayList<Items>>() {
             @Override
             public void onResponse(Call<ArrayList<Items>> call, Response<ArrayList<Items>> response) {
                 ArrayList<Items> items = response.body();
                 if (items != null) {
-                    searchItemsAdapter = new PopularAdapter(SearchActivity.this, items);
+                    searchItemsAdapter = new SearchItemAdapter(SearchActivity.this, items);
                     recyclerViewItems.setAdapter(searchItemsAdapter);
                 }
             }
@@ -91,12 +89,12 @@ public class SearchActivity extends Base {
             }
         });
 
-        ApiService.apiService.searchItemByCategoryTitle(base64).enqueue(new Callback<ArrayList<Items>>() {
+        ApiService.apiService.searchItemByCategoryTitle(search_text).enqueue(new Callback<ArrayList<Items>>() {
             @Override
             public void onResponse(Call<ArrayList<Items>> call, Response<ArrayList<Items>> response) {
                 ArrayList<Items> items = response.body();
                 if (items != null) {
-                    searchCatAdapter = new PopularAdapter(SearchActivity.this, items);
+                    searchCatAdapter = new SearchItemAdapter(SearchActivity.this, items);
                     recyclerViewCat.setAdapter(searchCatAdapter);
                 }
             }
@@ -108,12 +106,12 @@ public class SearchActivity extends Base {
         });
 
 
-        ApiService.apiService.searchItemByCompany(base64).enqueue(new Callback<ArrayList<Items>>() {
+        ApiService.apiService.searchItemByCompany(search_text).enqueue(new Callback<ArrayList<Items>>() {
             @Override
             public void onResponse(Call<ArrayList<Items>> call, Response<ArrayList<Items>> response) {
                 ArrayList<Items> items = response.body();
                 if (items != null) {
-                    searchComAdapter = new PopularAdapter(SearchActivity.this, items);
+                    searchComAdapter = new SearchItemAdapter(SearchActivity.this, items);
                     recyclerViewCom.setAdapter(searchComAdapter);
                 }
             }

@@ -15,42 +15,38 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.main.MarketApp;
-import com.example.models.Category;
 import com.example.models.Items;
-import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
-import com.example.smartmarket.dashboard.DashboardActivity;
 import com.example.smartmarket.items.DetailItemActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
-
+public class SearchItemAdapter extends RecyclerView.Adapter<SearchItemAdapter.ViewHolder> {
     ArrayList<Items> itemsPopular;
     Context context;
 
-    public PopularAdapter(Context context, ArrayList<Items> itemsPopular) {
+    public SearchItemAdapter(Context context, ArrayList<Items> itemsPopular) {
         this.itemsPopular = itemsPopular;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public PopularAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SearchItemAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflater = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.viewholder_popular, parent, false);
-        return new ViewHolder(inflater);
+        return new SearchItemAdapter.ViewHolder(inflater);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PopularAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SearchItemAdapter.ViewHolder holder, int position) {
         Items item = itemsPopular.get(position);
         holder.popular_title.setText(item.title);
         holder.popular_price_sell.setText(String.valueOf(item.sellPrice));
         holder.popular_quantity_sold.setText(String.valueOf(item.quantity_sold));
 
-        String imgUrl = item.image;
+        String imgUrl = MarketApp.API_ROOT_URL + item.image;
         Picasso.with(holder.itemView.getContext())
                 .load(imgUrl)
                 .into(holder.popular_image);
@@ -61,10 +57,13 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
                 onClickDetail(item);
             }
         });
+
+
     }
 
     private void onClickDetail(Items item) {
         Intent intent = new Intent(context, DetailItemActivity.class);
+        item.image = MarketApp.API_ROOT_URL + item.image;
         Bundle bundle = new Bundle();
         bundle.putSerializable("object_item", item);
         intent.putExtras(bundle);

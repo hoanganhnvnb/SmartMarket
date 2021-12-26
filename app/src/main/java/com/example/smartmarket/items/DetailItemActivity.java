@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.models.Category;
 import com.example.models.Items;
 import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
@@ -20,6 +21,7 @@ public class DetailItemActivity extends Base {
     ImageView detail_item_image;
     TextView detail_item_title, detail_item_des, detail_item_priceSell, detail_quantity_sold, detail_quantity;
     Button detail_item_btnbuy;
+    TextView cat_detail, company_detail;
 
     private Items item;
 
@@ -44,6 +46,15 @@ public class DetailItemActivity extends Base {
         detail_item_priceSell.setText(String.valueOf(item.sellPrice));
         detail_quantity_sold.setText(String.valueOf(item.quantity_sold));
         detail_quantity.setText(String.valueOf(item.quantity));
+        company_detail.setText(item.companyName);
+
+        for (int i = 0; i < app.categories.size(); i++) {
+            Category category = app.categories.get(i);
+            if (item.category == category.id) {
+                cat_detail.setText(category.title);
+                break;
+            }
+        }
 
         String imgUrl = item.image;
         Picasso.with(this)
@@ -60,7 +71,8 @@ public class DetailItemActivity extends Base {
         detail_item_priceSell = (TextView) findViewById(R.id.detail_item_priceSell);
         detail_quantity_sold = (TextView) findViewById(R.id.detail_quantity_sold);
         detail_quantity = (TextView) findViewById(R.id.detail_quantity);
-        detail_item_btnbuy = (Button) findViewById(R.id.detail_item_btnbuy);
+        cat_detail = findViewById(R.id.cat_detail);
+        company_detail = findViewById(R.id.company_detail);
 
         detail_item_backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
