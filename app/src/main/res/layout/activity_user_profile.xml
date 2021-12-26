@@ -18,12 +18,21 @@
             android:background="@color/green_300"
             android:padding="20dp">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/avatar" />
+                android:src="@drawable/ava"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+<!--            <ImageView-->
+<!--                android:id="@+id/profile_image"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="150dp"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:src="@drawable/ava" />-->
 
             <TextView
                 android:id="@+id/full_name"
@@ -131,14 +140,14 @@
 
 <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Update Profile"
-            android:fontFamily="@font/bungee"
-            android:background="@drawable/button_bg"
-            android:id="@+id/button_update"/>
+<!--            <Button-->
+<!--                android:id="@+id/button_update"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:background="@drawable/button_bg"-->
+<!--                android:fontFamily="@font/bungee"-->
+<!--                android:text="Update Profile" />-->
 
         </LinearLayout>
     </LinearLayout>
