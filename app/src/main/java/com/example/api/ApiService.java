@@ -91,6 +91,9 @@ public interface ApiService {
     Call<MessageApi> addImage(@Path("barcode") long barcodeEdit,
                               @Part MultipartBody.Part image);
 
+    @GET("items/api/items/category/{pk}")
+    Call<ArrayList<Items>> getItemByCategory(@Path("pk") int pk);
+
     // USER API----------------------------------------------------------
     // register user
     @POST("user/api/users")

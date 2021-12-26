@@ -2,7 +2,9 @@ package com.example.models;
 
 import androidx.annotation.NonNull;
 
-public class Category {
+import java.io.Serializable;
+
+public class Category implements Serializable {
     public int id;
     public String title;
     public String slug;

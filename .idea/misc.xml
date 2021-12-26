@@ -45,6 +45,7 @@
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_detail_item.xml" value="0.152" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_history_order_detail.xml" value="0.13360507246376813" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_introduction.xml" value="0.2" />
+        <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_items_by_category.xml" value="0.1375" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_list_items.xml" value="0.14427083333333332" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_list_notifies.xml" value="0.15" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_list_order.xml" value="0.15" />
@@ -56,7 +57,7 @@
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_scan.xml" value="0.2" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_scan_qrpay.xml" value="0.12604166666666666" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_scan_to_cart.xml" value="0.12604166666666666" />
-        <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_search.xml" value="0.12552083333333333" />
+        <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_search.xml" value="0.264" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_user_list.xml" value="0.15" />
         <entry key="..\:/HK1_N4/MobileDev/SmartMarket/app/src/main/res/layout/activity_user_profile.xml" value="0.13360507246376813" />

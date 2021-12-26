@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.example.adapter.PopularAdapter;
 import com.example.adapter.SearchItemAdapter;
@@ -34,8 +37,8 @@ public class SearchActivity extends Base {
     public RecyclerView.Adapter searchComAdapter;
     public RecyclerView recyclerViewCom;
 
-    public SearchView searchView;
-
+    public TextView search_text_head;
+    public Button searchback;
     String search_text;
 
     @Override
@@ -46,8 +49,16 @@ public class SearchActivity extends Base {
         Intent intent = getIntent();
         search_text = intent.getStringExtra("search_text");
 
-        searchView = (SearchView) findViewById(R.id.searchView_main);
-        searchView.setQueryHint(search_text);
+        search_text_head = findViewById(R.id.search_text_head);
+        search_text_head.setText("Kết quả cho: " + search_text);
+
+        searchback = findViewById(R.id.searchback);
+        searchback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         LinearLayoutManager linearLayoutManagerItems =
                 new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);

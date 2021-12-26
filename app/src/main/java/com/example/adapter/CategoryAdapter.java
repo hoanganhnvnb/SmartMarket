@@ -1,5 +1,8 @@
 package com.example.adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +15,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.models.Category;
+import com.example.smartmarket.Profile.HistoryOrderDetailActivity;
 import com.example.smartmarket.R;
+import com.example.smartmarket.items.ItemsByCategoryActivity;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -21,9 +26,11 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     ArrayList<Category> categories;
+    Context context;
 
-    public CategoryAdapter(ArrayList<Category> categories) {
+    public CategoryAdapter(Context context, ArrayList<Category> categories) {
         this.categories = categories;
+        this.context = context;
     }
 
     @NonNull
@@ -78,6 +85,21 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 .load(imgUrl)
                 .into(holder.category_image);
 
+        holder.category_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendBundleCat(category);
+            }
+        });
+
+    }
+
+    private void sendBundleCat(Category category) {
+        Intent intent = new Intent(context, ItemsByCategoryActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_cat", category);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
 

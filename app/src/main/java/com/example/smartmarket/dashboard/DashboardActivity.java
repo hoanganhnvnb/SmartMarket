@@ -149,7 +149,7 @@ public class DashboardActivity extends Base {
         recyclerViewPopular.setLayoutManager(linearLayoutManagerPop);
 
         if (!app.categories.isEmpty()) {
-            categoryAdapter = new CategoryAdapter(app.categories);
+            categoryAdapter = new CategoryAdapter(DashboardActivity.this, app.categories);
             recyclerViewCategory.setAdapter(categoryAdapter);
         } else {
             ApiService.apiService.getAllCategoryApi().enqueue(new Callback<ArrayList<Category>>() {
@@ -157,7 +157,7 @@ public class DashboardActivity extends Base {
                 public void onResponse(Call<ArrayList<Category>> call, Response<ArrayList<Category>> response) {
                     if (response.body() != null) {
                         app.categories = response.body();
-                        categoryAdapter = new CategoryAdapter(app.categories);
+                        categoryAdapter = new CategoryAdapter(DashboardActivity.this, app.categories);
                         recyclerViewCategory.setAdapter(categoryAdapter);
                     }
                 }
