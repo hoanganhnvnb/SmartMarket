@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Date;
+import java.util.Map;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -30,10 +32,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             return;
         }
 
-        String title = notification.getTitle();
-        String body = notification.getBody();
+        Map<String, String> map = remoteMessage.getData();
 
-        sendNoti(title, body);
+        String username = map.get("username");
+//        Log.v("shop", username);
+        SharedPreferences tokenShared = getSharedPreferences(MarketApp.SHARED_PREFERENCE_TOKEN, MODE_PRIVATE);
+        SharedPreferences.Editor editorToken = tokenShared.edit();
+        String usernameSave = tokenShared.getString("username", null);
+        if (username.equals(usernameSave)) {
+            String title = notification.getTitle();
+            String body = notification.getBody();
+            sendNoti(title, body);
+        }
     }
 
     private void sendNoti(String title, String body) {

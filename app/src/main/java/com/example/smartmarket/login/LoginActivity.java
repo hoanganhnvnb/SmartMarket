@@ -152,6 +152,7 @@ public class LoginActivity extends Base {
 
                     editorToken.putString("token", token.access);
                     editorToken.putString("refresh", token.refresh);
+                    editorToken.putString("username", userLogin.username);
                     editorToken.apply();
 
                     // Send new registration token to user login
