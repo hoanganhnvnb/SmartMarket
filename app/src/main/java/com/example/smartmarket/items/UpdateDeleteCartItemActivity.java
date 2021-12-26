@@ -1,8 +1,5 @@
 package com.example.smartmarket.items;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,11 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatButton;
+
 import com.example.api.ApiService;
 import com.example.main.MarketApp;
 import com.example.models.CartItems;
 import com.example.models.Items;
 import com.example.models.MessageApi;
+import com.example.smartmarket.Base;
 import com.example.smartmarket.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
@@ -29,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpdateDeleteCartItemActivity extends AppCompatActivity {
+public class UpdateDeleteCartItemActivity extends Base {
 
     FloatingActionButton ud_backbtn;
     ImageView ud_image;

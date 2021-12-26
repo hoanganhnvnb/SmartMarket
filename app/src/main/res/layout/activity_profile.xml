@@ -151,6 +151,24 @@
                 android:drawablePadding="16dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:drawableStart="@drawable/ic_baseline_chart"
+                android:text="Thống kê"
+                android:textColor="@color/green_300"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@color/white"
+                android:elevation="3dp"
+                android:textAllCaps="false"
+                android:layout_marginTop="3dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="32dp"
+                android:drawablePadding="16dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
