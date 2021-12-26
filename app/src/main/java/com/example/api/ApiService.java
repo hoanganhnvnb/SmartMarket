@@ -8,6 +8,7 @@ import com.example.models.Items;
 import com.example.models.MessageApi;
 import com.example.models.Notify;
 import com.example.models.Order;
+import com.example.models.Report;
 import com.example.models.Token;
 import com.example.models.User;
 import com.google.gson.Gson;
@@ -201,4 +202,6 @@ public interface ApiService {
     @POST("search/api/item")
     Call<ArrayList<Items>> searchItemByItemTitle(@Field("search_text") String search_text);
 
+    @GET("report/get")
+    Call<Report> getReport();
 }

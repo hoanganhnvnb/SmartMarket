@@ -81,6 +81,25 @@ public class Report extends Base {
 
             }
         }));
+
+        ApiService.apiService.getReport().enqueue(new Callback<com.example.models.Report>() {
+            @Override
+            public void onResponse(Call<com.example.models.Report> call, Response<com.example.models.Report> response) {
+                com.example.models.Report report = response.body();
+                if (report != null) {
+                    total_nhap.setText(String.valueOf(report.total_price_import));
+                    total_thu.setText(String.valueOf(report.total_price_sell));
+                    total_sauthue.setText(String.valueOf(report.total_price_sell - report.total_price_import));
+                    report_quantityuser.setText(String.valueOf(report.new_cus));
+                    total_nhanvien.setText(String.valueOf(report.count_nv));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<com.example.models.Report> call, Throwable t) {
+
+            }
+        });
     }
 
     private void initView() {
